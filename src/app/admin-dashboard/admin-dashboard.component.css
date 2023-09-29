@@ -1,0 +1,40 @@
+.btn-danger{
+    height: 50px;
+    width:50px;
+}
+.container{
+    /* margin-top: 6rem; */
+    padding-bottom: 20%;
+}
+.card1{
+    margin-top: 2rem;
+
+}
+img{
+    width:18rem;
+    height:18rem;
+}
+.img-banner{
+    width:30rem;
+}
+.card:hover{
+    transform: scale(1.05);
+ box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+.card1:hover{
+    transform: scale(1.05);
+ box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+.card{
+    border:none;
+    margin-top: 7rem;
+    background-color: black;
+}
+.jumbotron{
+    background-color: black;
+}
+.card-label{
+    color: aliceblue;
+    font-size: x-large;
+    padding-bottom: 5px;
+}

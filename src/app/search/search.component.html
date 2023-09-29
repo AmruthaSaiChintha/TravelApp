@@ -1,0 +1,270 @@
+<header class="bg-surface-primary border-bottom pt-6">
+    <div class="container-fluid">
+        <div class="mb-npx">
+            <div class="row align-items-center">
+                <!-- Navigation Options -->
+                <div class="col-12 text-center">
+                    <ul class="nav nav-tabs mt-4 overflow-x border-0">
+                        <li class="nav-item"><a href="/viewbuses" class="nav-link">View Buses</a></li>
+                        <li class="nav-item"><a href="/profile" class="nav-link">Ratings</a></li>
+                        <li class="nav-item"><a href="/search" class="nav-link">Search and Book</a></li>
+                        <li class="nav-item"><a [routerLink]="['/viewProfile', id]" class="nav-link">Profile</a></li>
+                       
+                        <!-- <li class="nav-item"><a href="/viewfeed" class="nav-link">Feedback</a></li> -->
+                        <!-- <li class="nav-item"><a href="/booking" class="nav-link">Bookings</a></li> -->
+                        <li class="nav-item"><a href="/login" class="nav-link">Logout</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+  </header>
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Bus Search</title>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+     <style>
+         body {
+             /* background-image: url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnVzfGVufDB8fDB8fHww&w=1000&q=80'); */
+             background-size: cover;
+             background-position: center;
+             min-height: 60px;
+             display: flex;
+             justify-content: center;
+             align-items: center;
+         }
+         .suggestions {
+       list-style: none;
+       padding: 0;
+       margin: 0;
+       border: 1px solid #ccc;
+       border-top: none;
+       position: absolute;
+       background-color: #fff;
+       width: 90%;
+       max-height: 100px;
+       overflow-y: auto;
+       z-index: 1;
+     }
+ 
+     .suggestions li {
+       padding: 5px 10px;
+       cursor: pointer;
+     }
+ 
+     .suggestions li:hover {
+       background-color: #f0f0f0;
+     }
+ 
+    
+     .spacer-label {
+       visibility: hidden;
+     }
+ 
+       
+         #sidebar {
+     background-color: transparent !important;
+     border-right: 1px solid #070707;
+ }
+ 
+         
+     </style>
+ </head>
+ 
+ <body>
+     <main class="col-md-10 ml-sm-auto col-lg-19 px-md-4">
+         <!-- <h1 class="text-center mt-4">Bus Search</h1> -->
+         <hr>
+ 
+         <div class="row">
+             <div class="col-md-2">
+                 <div class="form-group">
+                     <label for="source">Source</label>
+                     <input type="text" class="form-control" id="source" [(ngModel)]="source" placeholder="Enter Source" (input)="filterSource()">
+                     <ul class="suggestions" *ngIf="sourceSuggestions.length > 0">
+                         <li *ngFor="let suggestion of sourceSuggestions" (click)="selectSuggestion('source', suggestion)">
+                             {{ suggestion }}
+                         </li>
+                     </ul>
+                 </div>
+             </div>
+             <div class="col-md-2">
+                 <div class="form-group">
+                     <label for="destination">Destination</label>
+                     <input type="text" class="form-control" id="destination" [(ngModel)]="destination" placeholder="Enter Destination" (input)="filterDestination()">
+                     <ul class="suggestions" *ngIf="destinationSuggestions.length > 0">
+                         <li *ngFor="let suggestion of destinationSuggestions" (click)="selectSuggestion('destination', suggestion)">
+                             {{ suggestion }}
+                         </li>
+                     </ul>
+                 </div>
+             </div>
+             <div class="col-md-2">
+                 <div class="form-group">
+                     <label for="departureDate">Departure Date</label>
+                     <input type="date" class="form-control" id="departureDate" [(ngModel)]="departureDate">
+                 </div>
+             </div>
+             <div class="col-md-2">
+                 <div class="form-group">
+                     <label class="spacer-label">Spacer</label>
+                     <div class="input-group">
+                         <button class="btn btn-primary" (click)="searchBuses()">Search</button>
+                     </div>
+                 </div>
+             </div>
+             <div class="col-md-2">
+                 <div class="form-group">
+                     <label for="chargesSort">Sort by Price</label>
+                     <select class="form-control" [(ngModel)]="chargesSort" (change)="sortBuses()">
+                         <option value="all">PRICE</option>
+                         <option value="lowToHigh">Low to High</option>
+                         <option value="highToLow">High to Low</option>
+                     </select>
+                 </div>
+             </div>
+             <div class="col-md-2">
+                 <div class="form-group">
+                     <label for="departureTimesort">Sort by AM|PM</label>
+                     <select class="form-control" [(ngModel)]="departureTimesort" (change)="sortBuse()">
+                         <option value="all">AM|PM</option>
+                         <option value="AM">AM</option>
+                         <option value="PM">PM</option>
+                     </select>
+                 </div>
+             </div>
+         </div>
+         <!-- <app-ticket></app-ticket> -->
+  
+
+         <!-- <div *ngIf="showViewBuses"> -->
+            <!-- <app-viewbuses></app-viewbuses> -->
+          <!-- </div> -->
+  
+         <div class="row mt-4">
+             <div class="col-md-12">
+                 <div *ngIf="showBusDetails">
+                     <div *ngFor="let bus of filteredBuses">
+                         <div class="card my-3">
+                             <div class="card-body">
+                                <h5 class="card-title" style="text-transform: uppercase">{{ bus.source }} - {{ bus.destination }}</h5><br>
+
+                                 <h6 class="card-subtitle mb-2 text-muted">
+                                    <p><strong>Departure Time:</strong> {{ bus.departureTime }}</p>
+                                    <p><strong>Departure Date:</strong> {{ bus.departureDate }}</p> 
+                                    <p><strong>Bus Name:</strong> {{ bus.busName }}</p> 
+                                    <p><strong>Bus Id:</strong> {{ bus.busId }}</p> 
+                                    <p><strong>First AC Price:</strong> {{ bus.firstACPrice }}</p>
+                                    <p><strong>Second AC Price:</strong> {{ bus.secondACPrice }}</p>
+                                    <p><strong>Sleeper Price:</strong> {{ bus.sleeperPrice }}</p> 
+                                    <div class="total-price">
+                                        <label for="totalPrice" class="price-label">Total Price:</label>
+                                        <div class="price-value">
+                                            {{ calculateTotalPrice(bus) | currency: 'INR' }}
+                                        </div>
+                                    </div>
+                                    <div class="seat-options" style="margin-top: 20px;">
+                                
+                                    <div class="seat-selection">
+                                        <label for="firstACSeats" class="seat-label">First AC Seats:</label>
+                                        <input type="number" [(ngModel)]="selectedSeats[bus.busId].selectedFirstAC" [max]="getMaxSeats('firstAC', bus)" min="0">
+                                        <span *ngIf="selectedSeats[bus.busId].selectedFirstAC> getMaxSeats('firstAC', bus)" class="alert alert-danger mt-2">
+                                          only{{ getMaxSeats('firstAC', bus) }} First AC seats on this bus.
+                                        </span>
+                                      </div>
+                                      
+                                      <div class="seat-selection">
+                                        <label for="secondACSeats" class="seat-label">Second AC Seats:</label>
+                                        <input type="number" [(ngModel)]="selectedSeats[bus.busId].selectedSecondAC" [max]="getMaxSeats('secondAC', bus)" min="0">
+                                        <span *ngIf="selectedSeats[bus.busId].selectedSecondAC > getMaxSeats('secondAC', bus)" class="alert alert-danger mt-2">
+                                          You can't select more than {{ getMaxSeats('secondAC', bus) }} Second AC seats on this bus.
+                                        </span>
+                                      </div>
+                                      
+                                      <div class="seat-selection">
+                                        <label for="sleeperSeats" class="seat-label">Sleeper Seats:</label>
+                                        <input type="number" [(ngModel)]="selectedSeats[bus.busId].selectedSleeper" [max]="getMaxSeats('sleeper', bus)" min="0">
+                                        <span *ngIf="selectedSeats[bus.busId].selectedSleeper > getMaxSeats('sleeper', bus)" class="alert alert-danger mt-2">
+                                          You can't select more than {{ getMaxSeats('sleeper', bus) }} Sleeper seats on this bus.
+                                        </span>
+                                      </div>
+                                      </div>
+  
+  <div class="mt-2">
+    Total Price: {{ calculateTotalPrice(bus) | currency: 'INR' }}
+  </div>
+  
+  
+
+
+ 
+
+
+
+
+  
+
+
+  <!-- Only display the "Back" button when selectedBus is defined -->
+<button *ngIf="selectedBus" (click)="navigateToTicket(selectedBus)" class="formbold-btn">Back</button>
+
+
+                                 </h6>
+                                 <!-- <button [ngClass]="{'btn btn-success': selectedBus === bus, 'btn btn-primary': selectedBus !== bus}" class="btn mr-3" (click)="showBusInfo(bus)">Select Seat</button> -->
+                                 <button [ngClass]="{'btn btn-success': selectedBus === bus, 'btn btn-primary': selectedBus !== bus}"
+        class="btn mr-3"
+        [disabled]="isSelectSeatDisabled(bus)"
+        (click)="showBusInfo(bus)">Select Seat</button>
+
+        <button [ngClass]="{'btn btn-success': selectedBus === bus, 'btn btn-primary': selectedBus !== bus}"
+        class="btn mr-3"
+        (click)="bookSeats(bus)">Please Click to Confirm Tickets</button>
+
+<div *ngIf="ticketConfirmed" class="alert alert-success mt-2">
+  Tickets are confirmed!
+</div>
+
+
+
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+     </main>
+     <div class="container-fluid">
+         <div class="row">
+             <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+                 <div class="position-sticky">
+             
+                 </div>
+             </nav>
+         </div>
+     </div>
+
+
+
+
+
+
+
+
+
+
+
+

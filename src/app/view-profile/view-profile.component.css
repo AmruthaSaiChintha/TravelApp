@@ -1,0 +1,42 @@
+.register-card {
+    background-color: rgb(243, 233, 233);
+    box-shadow: 10px 10px 5px 5px rgb(231, 243, 248);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.profile-header {
+    text-align: center;
+}
+
+.profile-header h3 {
+    margin: 0;
+}
+
+.profile-details {
+    margin-top: 20px;
+}
+
+.profile-item {
+    margin-bottom: 10px;
+}
+
+.profile-item strong {
+    display: inline-block;
+    width: 150px;
+    font-weight: bold;
+}
+
+.profile-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.edit-profile-button,
+.view-bookings-button {
+    flex: 1;
+    margin: 0 5px;
+}

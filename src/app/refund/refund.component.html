@@ -1,0 +1,89 @@
+
+
+
+<header class="bg-surface-primary border-bottom pt-6">
+    <div class="container-fluid">
+        <div class="mb-npx">
+            <div class="row align-items-center">
+                <!-- Navigation Options -->
+                <div class="col-12 text-center">
+                    <ul class="nav nav-tabs mt-4 overflow-x border-0">
+                        <li class="nav-item"><a href="/post" class="nav-link">Add Bus</a></li>
+                        <li class="nav-item"><a href="/regbuses" class="nav-link">Users</a></li>
+                        <li class="nav-item"><a href="/viewbookings" class="nav-link">Bookings</a></li>
+                         <li class="nav-item"><a href="/refund" class="nav-link">RefundReq</a></li>
+                         <li class="nav-item"><a href="/showfeed" class="nav-link">feedback Info</a></li>
+                        <li class="nav-item"><a href="/Admin" class="nav-link">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+  </header>
+  <div class="container">
+      <h3 class="text-center my-5 items_title">Bookings</h3>
+      <p class="text-center text-muted mt-5 mb-0"><a href="#!"
+        class="forgot-password" routerLink="/adminDashboard"></a>
+  
+  
+  <table class="table table-striped table-dark">
+      <thead>
+        <tr>
+        
+          
+              <th>UserName</th>
+              <th>Email</th>
+              <th>Contact</th>
+              <!-- <th>Image</th> -->
+              <th>AccountNo</th>
+                
+            
+          
+        </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let Bus of Bus">
+              <td>{{Bus.userName}}</td>
+              <td>{{Bus.email}}</td>
+              <td>{{Bus.contact}}</td>
+              <!-- <td><img src="{{Bus.image}}" alt="" width="100px"></td> -->
+              <td>{{Bus.accountNo}}</td>
+             
+          </tr>
+       
+      </tbody>
+    </table>
+    </div>
+  
+  
+    
+  
+  
+  
+    <div class="container">
+      <h3 class="text-center my-5 items_title"></h3>
+      <p class="text-center text-muted mt-5 mb-0"><a href="#!"
+        class="forgot-password" routerLink="/adminDashboard"></a>
+  
+  
+  <table class="table table-striped table-dark">
+      <thead>
+        <tr>
+        
+          <!-- <th scope="col">Last</th>
+          <th scope="col">Handle</th> -->
+        </tr>
+      </thead>
+      <tbody>
+          <!-- <tr *ngFor="let User of User">
+              <td>{{User.username}}</td>
+              <td>{{User.email}}</td>
+          </tr>  -->
+       
+      </tbody>
+    </table>
+    <!-- <div>
+      <p class="text-center text-muted mt-5 mb-0"><a href="#!"
+        class="forgot-password" routerLink="/adminDashboard">Go Back</a>
+    </div> -->
+    </div>

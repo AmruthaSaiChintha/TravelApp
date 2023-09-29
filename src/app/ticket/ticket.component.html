@@ -1,0 +1,239 @@
+<header class="bg-surface-primary border-bottom pt-6">
+  <div class="container-fluid">
+    <div class="mb-npx">
+      <div class="row align-items-center">
+   
+        <div class="col-12 text-center">
+          <ul class="nav nav-tabs mt-4 overflow-x border-0">
+            <li class="nav-item"><a href="/viewbuses" class="nav-link">View Buses</a></li>
+            <li class="nav-item"><a href="/profile" class="nav-link">Ratings</a></li>
+            <li class="nav-item"><a href="/search" class="nav-link">Search and Book</a></li>
+            <li class="nav-item"><a href="/viewfeed" class="nav-link">Feedback</a></li>
+            <li class="nav-item"><a href="/booking" class="nav-link">Bookings</a></li>
+            <li class="nav-item"><a href="/login" class="nav-link">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card ticket-details">
+        <div class="card-body">
+          <h2 class="card-title">Ticket Details</h2>
+          <div class="seat-layout-container">
+            <div>
+              <ul>
+                <li *ngIf="selectedSeats.firstACSeats > 0">First AC Seats: {{ selectedSeats.firstACSeats }}</li>
+                <li *ngIf="selectedSeats.secondACSeats > 0">Second AC Seats: {{ selectedSeats.secondACSeats }}</li>
+                <li *ngIf="selectedSeats.sleeperSeats > 0">Sleeper Seats: {{ selectedSeats.sleeperSeats }}</li>
+                
+              </ul>
+            </div>
+            
+            <div>
+              <!-- <p>busId:{{BusId}}</p> -->
+              <p>Departure Date: {{ departureDate }}</p>
+              <p>Departure Time: {{ departureTime }}</p>
+              <p>Bus Name: {{ busName }}</p>
+              <p>totalAmount:{{totalAmount}}</p>
+            </div>
+          </div>
+          <br>
+        <!-- In your ticket.component.html template -->
+          <div class="booking-message">
+            <p>Please do your payment. Thank you for choosing ridetohome.com! Your seat number will be given when you check in...</p>
+          </div>
+          <div *ngIf="showSuccessMessage" class="success-message">
+            Your transaction is done. Click below to download the ticket.
+          
+            <!-- <button (click)="downloadTicket()" class="btn btn-success mt-3">Download Ticket</button> -->
+            <button (click)="downloadTicket()" class="formbold-btn">Download Ticket</button>
+            
+
+            <button *ngIf="showEmailForm" (click)="toggleEmailForm()" class="formbold-btn">Email</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+   
+    <form *ngIf="showEmailForm" (submit)="send()" class="email-form">
+      <div class="form-group">
+        <label for="busName" class="form-label">Bus Name</label>
+        <input
+          type="text"
+          id="busName"
+          name="busName"
+          class="form-control"
+          [value]="busName"
+          readonly
+        />
+      </div>
+      <div class="form-group">
+        <label for="departureDate" class="form-label">Departure Date</label>
+        <input
+          type="text"
+          id="departureDate"
+          name="departureDate"
+          class="form-control"
+          [value]="departureDate"
+          readonly
+        />
+      </div>
+      <div class="form-group">
+        <label for="departureTime" class="form-label">Departure Time</label>
+        <input
+          type="text"
+          id="departureTime"
+          name="departureTime"
+          class="form-control"
+          [value]="departureTime"
+          readonly
+        />
+      </div>
+      <div class="form-group">
+        <label for="source" class="form-label">Source</label>
+        <input
+          type="text"
+          id="source"
+          name="source"
+          class="form-control"
+          [value]="source"
+          readonly
+        />
+      </div>
+      <div class="form-group">
+        <label for="destination" class="form-label">Destination</label>
+        <input
+          type="text"
+          id="destination"
+          name="destination"
+          class="form-control"
+          [value]="destination"
+          readonly
+        />
+      </div>
+      <div class="form-group">
+        <label for="totalAmount" class="form-label">Total Amount</label>
+        <input
+          type="text"
+          id="totalAmount"
+          name="totalAmount"
+          class="form-control"
+          [value]="totalAmount"
+          readonly
+        />
+      </div>
+      <div class="form-group">
+        <label for="from_email" class="form-label">Your Email</label>
+        <input
+          formControlName="from_email"
+          type="email"
+          name="from_email"
+          id="from_email"
+          placeholder="Your Email"
+          class="form-control"
+        />
+      </div>
+      <div class="form-group">
+        <button type="submit" class="form-btn">Send</button>
+      </div>
+    </form>
+    
+    
+    
+    <div class="col-md-6 mt-6">
+      <div class="card transaction-form">
+        <div class="card-body">
+          <h2 class="card-title">Enter Bank Card Details</h2>
+          <form (ngSubmit)="submitBankDetails()" #bankForm="ngForm">
+            <div class="form-group">
+              <label for="bankName" class="form-label">Bank Name:</label>
+              <input type="text" id="bankName" name="bankName" [(ngModel)]="bankName" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="cardNumber" class="form-label">Card Number 12 digits:</label>
+              <input type="text" id="cardNumber" name="cardNumber" [(ngModel)]="cardNumber" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="ExpiryDate" class="form-label">Expiry Date:</label>
+              <input type="date" id="ExpiryDate" name="ExpiryDate" [(ngModel)]="ExpiryDate" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="ybl" class="form-label">number@ybl</label>
+              <input type="text" id="ybl" name="ybl" [(ngModel)]="ybl" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+          <div *ngIf="showSuccessMessage" class="success-message">
+            Transaction is successful!
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Custom CSS for Ticket Component */
+  /* ... (existing styles for ticket details) ... */
+
+  /* Styling for Bank Card Form */
+  .transaction-form {
+    background-color: #fff; /* White background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  }
+
+  /* Additional styling for form elements */
+  .form-label {
+    font-weight: bold;
+  }
+
+  /* Style the input fields */
+  .form-control {
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 15px;
+    transition: border-color 0.3s ease-in-out;
+  }
+
+  .form-control:focus {
+    border-color: #007bff; /* Blue border on focus */
+  }
+
+  /* Style the Submit button */
+  .btn-primary {
+    background-color: #007bff; /* Blue background */
+    border-color: #007bff; /* Blue border color */
+  }
+
+  .btn-primary:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    border-color: #0056b3;
+  }
+
+  .btn-success {
+    background-color: #28a745; /* Green background for Download button */
+    border-color: #28a745;
+  }
+
+  .btn-success:hover {
+    background-color: #1e7e34; /* Darker green on hover */
+    border-color: #1e7e34;
+  }
+</style>
+
+
+
+
+
+           

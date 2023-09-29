@@ -1,0 +1,189 @@
+body {
+   
+  /* min-height: 300px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.seat-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px; 
+}
+
+
+.seat-section {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+
+.seat-selection {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  margin-right: 20px; 
+}
+
+
+.seat-label {
+  font-weight: bold;
+}
+
+
+.alert {
+  margin-top: 10px;
+}
+
+.seat-selection {
+  display: inline-block;
+  width: calc(33.33% - 10px); 
+  margin-right: 10px; 
+  vertical-align: top;
+}
+
+
+.seat-selection input[type="number"] {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  width: 100%;
+  box-sizing: border-box; 
+}
+
+.price-label {
+  display: block;
+  margin-top: 10px;
+}
+
+.price-value {
+  font-weight: bold;
+}
+
+
+.mt-2 {
+  margin-top: 10px;
+}
+
+
+.seat-value {
+  display: flex;
+  align-items: center;
+}
+
+
+.seat-number {
+  margin-right: 5px;
+}
+
+.bus-details {
+  background-color: #f5f5f5;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.bus-details p {
+  margin: 5px 0;
+}
+
+.bus-details strong {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.bus-image {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.bus-card {
+  display: flex;
+  align-items: flex-start; 
+  margin-bottom: 20px;
+}
+
+.bus-details {
+  flex: 1;
+  padding-right: 20px; 
+
+.bus-image {
+  flex: 0 0 150px;
+  text-align: right; 
+}
+}
+
+
+body {
+  /* background-image: url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnVzfGVufDB8fDB8fHww&w=1000&q=80'); */
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh; /* Set a minimum height for the body to cover the entire viewport */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav-tabs {
+  background-color: #007bff; /* Set a background color */
+  border: none;
+}
+
+.nav-tabs .nav-item .nav-link {
+  color: #fff; /* Text color */
+}
+
+.nav-tabs .nav-item .nav-link:hover {
+  background-color: #0056b3; /* Hover color */
+  color: #fff;
+}
+.form-control {
+  border: 1px solid #ccc; /* Add a border to form inputs */
+}
+
+/* Style the search button */
+.btn-primary {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+}
+
+/* Style the select dropdowns */
+.select {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+}
+#sidebar {
+  background-color: #f8f9fa; /* Set a background color */
+  border-right: 1px solid #ccc;
+}
+
+/* Style sidebar links */
+#sidebar .nav-link {
+  color: #333; /* Text color */
+}
+
+#sidebar .nav-link:hover {
+  background-color: #e2e6ea; /* Hover color */
+  color: #333;
+}
+/* Style the "Select Seat" button */
+.btn-success {
+  background-color: #28a745;
+  color: #fff;
+}
+
+/* Style the "Confirm Tickets" button */
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+}

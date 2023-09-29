@@ -1,0 +1,111 @@
+.login-card {
+  max-width: 400px;
+  padding: 20px;
+  background-color: #fff;
+  margin: 0 auto;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.login-card .profile-img-card {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 20px;
+  display: block;
+  border-radius: 50%;
+  background-color: #3498db; /* Change to your desired color */
+  color: #fff;
+  font-size: 40px;
+  line-height: 100px;
+}
+
+.login-card .profile-name-card {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.login-card .reauth-email {
+  color: #777;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.login-card .form-signin input[type=email],
+.login-card .form-signin input[type=password] {
+  height: 40px;
+  font-size: 16px;
+  width: 100%;
+  display: block;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.login-card label {
+  color: #333;
+  font-weight: bold;
+}
+
+.login-card .form-signin .form-control:focus {
+  border-color: #3498db; /* Change to your desired focus color */
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+.login-card .btn.btn-signin {
+  font-weight: 700;
+  height: 40px;
+  line-height: 40px;
+  font-size: 16px;
+  background: #3498db; /* Change to your desired button color */
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.login-card .btn.btn-signin:hover {
+  background: #2980b9; /* Change to your desired hover color */
+}
+
+.login-card .forgot-password {
+  color: #777;
+  text-decoration: underline;
+  font-size: 14px;
+}
+
+/* Style for alert boxes */
+.alert {
+  background-color: #e68277; /* Red background color */
+  color: #fff;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 3px;
+  text-align: center;
+}
+/* Style for alert boxes */
+.alert-box {
+  background-color: #d87c7c; /* Red background color */
+  color: #fff; /* Text color */
+  border: 1px solid #dd7878; /* Red border */
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 3px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.alert-box .icon {
+  width: 24px; /* Adjust icon size as needed */
+  height: 24px;
+  margin-right: 10px;
+}
+
+/* Additional styling for password validation */
+.invalid-password {
+  border-color: #d17a7a; /* Red border for invalid password input */
+}

@@ -1,0 +1,21 @@
+
+<div class="transaction-form">
+    <h2>Enter Bank Card Details</h2>
+    <form (ngSubmit)="submitBankDetails()" #bankForm="ngForm">
+      <div class="form-group">
+        <label for="bankName">Bank Name:</label>
+        <input type="text" id="bankName" name="bankName" [(ngModel)]="bankName" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="cardNumber">Card Number (Last 4 digits):</label>
+        <input type="text" id="cardNumber" name="cardNumber" [(ngModel)]="cardNumber" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  
+    <div *ngIf="showSuccessMessage" class="success-message">
+      Your transaction is done. Click below to download the ticket.
+      <button (click)="downloadTicket()" class="btn btn-success">Download Ticket</button>
+    </div>
+  </div>
+  

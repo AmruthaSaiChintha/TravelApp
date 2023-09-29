@@ -1,0 +1,95 @@
+/* Custom CSS for the feedback card */
+.feedback-card {
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the feedback header */
+.feedback-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Style for the feedback awards list */
+.feedback-awards {
+  list-style: none;
+  padding-left: 0;
+}
+
+.feedback-awards li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+}
+
+.feedback-awards li span {
+  margin-right: 10px;
+  font-size: 24px;
+}
+
+/* Style for the unique features section */
+.feedback-features {
+  margin-top: 20px;
+}
+
+.feedback-features ul {
+  list-style-type: disc;
+}
+
+/* Style for the concluding message */
+.concluding-message {
+  font-style: italic;
+  text-align: center;
+  color: #888;
+  margin-top: 20px;
+}
+/* Custom CSS for the feedback card */
+.feedback-card {
+  padding: 50px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #8f98be, #bcb4c4);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the feedback header */
+.feedback-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Style for the feedback awards list */
+.feedback-awards {
+  list-style: none;
+  padding-left: 0;
+}
+
+.feedback-awards li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+}
+
+.feedback-awards li span {
+  margin-right: 10px;
+  font-size: 24px;
+}
+
+/* Style for the unique features section */
+.feedback-features {
+  margin-top: 20px;
+}
+
+.feedback-features ul {
+  list-style-type: disc;
+}
+
+/* Style for the concluding message */
+.concluding-message {
+  font-style: italic;
+  text-align: center;
+  color: #888;
+  margin-top: 20px;
+}

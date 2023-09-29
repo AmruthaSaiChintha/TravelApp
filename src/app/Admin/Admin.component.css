@@ -1,0 +1,27 @@
+/* Set the background color for the entire section, including the form and navbar */
+
+
+/* Style the container and form */
+.container {
+  /* background-color: #fff; */
+  border-radius: 5px;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+  padding: 15px; /* Reduce the padding to make the form shorter */
+}
+
+/* Style the form input fields and labels */
+
+/* Style the "Please fill in all details" message */
+.alert-danger[role="alert"] {
+  margin-top: 10px; /* Reduce the margin-top for the error message */
+}
+
+/* Style the Logout link */
+.nav-item a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.nav-item a:hover {
+  text-decoration: underline;
+}

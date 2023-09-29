@@ -1,0 +1,77 @@
+/* search.component.css */
+
+.btn-success {
+    background-color: green;
+    color: white;
+  }
+  
+  .btn-success:hover {
+    background-color: darkgreen;
+  }
+  
+  .btn-primary:hover {
+    background-color: darkblue;
+  }
+  
+  /* Background image for the container */
+  .container {
+    /* background-image: url("../../assets/img/det.jpg"); Replace with your image URL */
+    background-size: cover;
+    background-position:fixed;
+    background-repeat: no-repeat;
+  
+  }
+  body {
+    background-image: url("../../assets/img/det.jpg");
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+  
+  }
+  
+  
+  /* Styling for the search form */
+  .row {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+  }
+  
+  /* Styling for the form input fields */
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  /* Highlighting for source and destination input fields */
+  .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+  
+  /* Styling for the "Search Buses" button */
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  /* Styling for the card */
+  .card {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Styling for the "Book Bus" button */
+  .btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+  }
+  
+  /* Styling for the selected "Book Bus" button */
+  .btn-primary.selected {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  

@@ -1,0 +1,44 @@
+<nav class="navbar navbar-dark navbar-expand-md bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="">RideToHome.com</a>
+    <button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggler">
+      <span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navcol-1">
+      <ul class="nav navbar-nav ml-auto">
+        <!-- Other menu items here -->
+
+        <!-- Feedback/ContactUs Link -->
+       
+
+        <!-- Signup/Login Dropdown and Logout Link -->
+        <li [hidden]="IsLoggedIn" class="nav-item dropdown">
+          <a class="nav-link active dropdown-toggle" id="signupLoginDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Signup/Login
+          </a>
+          <div class="dropdown-menu" aria-labelledby="signupLoginDropdown">
+            <a class="dropdown-item" routerLink="/signup">Signup</a>
+            <a class="dropdown-item" routerLink="/login">Login</a>
+          </div>
+        </li>
+        <li [hidden]="IsLoggedIn" class="nav-item"><a class="nav-link active" routerLink="/Admin">Agent</a></li>
+        <li [hidden]="IsLoggedIn" class="nav-item"><a class="nav-link active" routerLink="/con">Contact</a></li>
+        <li [hidden]="IsLoggedIn" class="nav-item">
+          <a class="nav-link active" routerLink="/viewfeed">
+            Feedback <i class="fa fa-comment"></i>
+          </a>
+        </li>
+        <!-- ... (other menu items) ... -->
+
+<!-- Logout Link -->
+<li [hidden]="IsLoggedIn" class="nav-item">
+  <a class="nav-link active" (click)="Logout()">
+    Logout <i class="fa fa-sign-out"></i>
+  </a>
+</li>
+
+        <li [hidden]="!IsLoggedIn" class="nav-item"><a class="nav-link active" (click)="Logout()">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

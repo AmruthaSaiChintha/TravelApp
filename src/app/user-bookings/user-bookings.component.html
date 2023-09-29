@@ -1,0 +1,78 @@
+<header class="bg-surface-primary border-bottom pt-6">
+  <div class="container-fluid">
+      <div class="mb-npx">
+          <div class="row align-items-center">
+             
+              <div class="col-12 text-center">
+                  <ul class="nav nav-tabs mt-4 overflow-x border-0">
+                      <li class="nav-item"><a href="/viewbuses" class="nav-link">View Buses</a></li>
+                      <li class="nav-item"><a href="/profile" class="nav-link">Ratings</a></li>
+                      <li class="nav-item"><a href="/search" class="nav-link">Search and Book</a></li>
+                      <li class="nav-item"><a [routerLink]="['/viewProfile', id]" class="nav-link">Profile</a></li>
+                     
+                    
+                      <!-- <li class="nav-item"><a href="/booking" class="nav-link">Bookings</a></li> -->
+                      <li class="nav-item"><a href="/login" class="nav-link">Logout</a></li>
+                      
+                      
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+</header>
+<div class="container">
+  <h2 class="text-center my-3">Your Bookings</h2>
+
+<table class="table table-striped my-5">
+  <thead>
+    <tr>
+      <th>Booking ID</th>
+      <th>BusName</th>
+      <th>Source</th>
+      <th>Destination</th>
+      <th>FirstAC</th>
+      <th>SecondAC</th>
+     <th>Sleeper</th>
+     <th>BookingDate</th>
+     <th>DepartureDate</th>
+     <th>DepartureTime</th>
+     <th>FareAmount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let booking of userBookings">
+      <td>{{ booking.bookingId }}</td>
+      <td>{{ booking.busName }}</td>
+      <td>{{ booking.source  }}</td>
+      <td>{{ booking.destination  }}</td>
+      <td>{{ booking.firstAC}}</td>
+      <td>{{ booking.secondAC}}</td>
+      <td>{{ booking.sleeper}}</td>
+      <td>{{ booking.bookingDate}}</td>
+      <td>{{ booking.departureDate}}</td>
+      <td>{{booking.departureTime}}</td>
+      <td>{{booking.fareAmount}}</td>
+      <td>
+        <div class="row">
+          <div class="col">
+        <a href="#"  routerLink="/cancelticket" class="btn btn-info">Cancel</a> 
+          </div>
+        </div>
+        <br>
+        <div class="row mt-1">
+          <div class="col">
+            <!-- <a [routerLink]="['/map']" [queryParams]="{ source: User.source, destination: User.destination }" class="btn btn-info">Track</a> -->
+            <a href="#"  routerLink="/map" class="btn btn-info">Track</a> 
+
+          </div>
+        </div>
+        <br>
+       
+        
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+</div>

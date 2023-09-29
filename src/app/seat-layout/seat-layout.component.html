@@ -1,0 +1,23 @@
+<div class="seat-layout-container">
+  <h1>Seat Layout</h1>
+
+  <div>
+    <h3>Selected Seats:</h3>
+    <ul>
+      <li *ngIf="selectedSeats.firstACSeats > 0">First AC Seats: {{ selectedSeats.firstACSeats }}</li>
+      <li *ngIf="selectedSeats.secondACSeats > 0">Second AC Seats: {{ selectedSeats.secondACSeats }}</li>
+      <li *ngIf="selectedSeats.sleeperSeats > 0">Sleeper Seats: {{ selectedSeats.sleeperSeats }}</li>
+    </ul>
+  </div>
+  
+
+  <div>
+    <h3>Bus Details:</h3>
+    <p>Departure Date: {{ departureDate }}</p>
+    <p>Departure Time: {{ departureTime }}</p>
+    <p>Bus Name: {{ busName }}</p>
+    <p>totalAmount:{{totalAmount}}</p>
+  </div>
+</div>
+
+

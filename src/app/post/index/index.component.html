@@ -1,0 +1,79 @@
+<header class="bg-surface-primary border-bottom pt-6">
+  <div class="container-fluid">
+    <div class="mb-npx">
+      <div class="row align-items-center">
+        <!-- Navigation Options -->
+        <div class="col-12 text-center">
+          <ul class="nav nav-tabs mt-4 overflow-x border-0">
+            <li class="nav-item"><a href="/post" class="nav-link">Add Bus</a></li>
+            <li class="nav-item"><a href="/regbuses" class="nav-link">Users</a></li>
+            <li class="nav-item"><a href="/viewbookings" class="nav-link">Bookings</a></li>
+             <li class="nav-item"><a href="/refund" class="nav-link">RefundReq</a></li>
+             <li class="nav-item"><a href="/showfeed" class="nav-link">feedback Info</a></li>
+            <li class="nav-item"><a href="/Admin" class="nav-link">Logout</a></li>
+            <!-- <li class="nav-item"><a href="/feedback" class="nav-link">Information</a></li>   -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <h3 class="text-center my-5 items_title"></h3>
+  <a href="#" routerLink="/post/create/" class="btn btn-success">Create New Bus</a>
+  <br>
+  <br>
+  <div class="row justify-content-center">
+    <div class="col-md-14">
+      <table class="table table-striped table-dark custom-table"> <!-- Added custom CSS class -->
+        <thead>
+          <tr>
+            <!-- <th>BusId</th> -->
+            <th>Name</th>
+            <th>source</th>
+            <th>image</th>
+            <th>destination</th>
+            <th>Date</th>
+            <th>Time</th>
+            <!-- <th>charges</th> -->
+            <th>FirstAC</th>
+            <th>FirstACprice</th>
+            <th>SecondAC</th>
+            <th>SecondACprice</th>
+            <th>Sleeper</th>
+            <th>Sleeperprice</th>
+            <th>Total</th>
+            <th width="250px">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let post of posts">
+            <!-- <td>{{ post.busId }}</td> -->
+            <td>{{ post.busName }}</td>
+            <td>{{ post.source }}</td>
+            <td><img src="{{post.image}}" alt=""></td>
+            <td>{{ post.destination}}</td>
+            <td>{{ post.departureDate }}</td>
+            <td>{{ post.departureTime}}</td>
+            <!-- <td>{{ post.charges}}</td> -->
+            <td>{{ post.firstAC}}</td>
+            <td>{{ post.firstACPrice}}</td>
+            <td>{{ post.secondAC}}</td>
+            <td>{{ post.secondACPrice}}</td>
+            <td>{{ post.sleeper}}</td>
+            <td>{{ post.sleeperPrice}}</td>
+            <td>{{ post.total}}</td>
+            <td>
+              <a href="#" [routerLink]="['/post/', post.busId, 'view']" class="btn btn-info">View</a>
+              <br><br>
+              <a href="#" [routerLink]="['/post/', post.busId, 'edit']" class="btn btn-primary">Edit</a>
+              <br><br>
+              <button type="button" (click)="deletePost(post.busId)" class="btn btn-danger">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

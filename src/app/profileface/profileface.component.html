@@ -1,0 +1,32 @@
+<header class="bg-surface-primary border-bottom pt-6">
+  <div class="container-fluid">
+      <div class="mb-npx">
+          <div class="row align-items-center">
+              <!-- Navigation Options -->
+              <div class="col-12 text-center">
+                  <ul class="nav nav-tabs mt-4 overflow-x border-0">
+                      <li class="nav-item"><a href="/viewbuses" class="nav-link">View Buses</a></li>
+                      <li class="nav-item"><a href="/profile" class="nav-link">Ratings</a></li>
+                      <li class="nav-item"><a href="/search" class="nav-link">Search and Book</a></li>
+                      <li class="nav-item"><a href="/profileface" class="nav-link">News Journal</a></li>
+                      <li class="nav-item"><a href="/viewfeed" class="nav-link">Feedback</a></li>
+                      <!-- <li class="nav-item"><a href="/feedback" class="nav-link">Information</a></li> -->
+                      <li class="nav-item"><a href="/login" class="nav-link">Logout</a></li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+</header>
+<div class=></div>
+<div class="container">
+  <h2 class="mt-5 text-center text-white">News Journal</h2>
+  <div class="news-list mt-4">
+    <div *ngFor="let article of newsArticles" class="news-article p-4">
+      <h3 class="text-dark">{{ article.title }}</h3>
+      <p>{{ article.content }}</p>
+    </div>
+  </div>
+</div>
+
+

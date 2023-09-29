@@ -1,0 +1,30 @@
+<div class="container mt-4">
+    <h1 class="text-center">Seat Information</h1>
+    <hr>
+  
+    <div *ngIf="busName">
+      <p><strong>Bus Name:</strong> {{ busName }}</p>
+      <p><strong>Source:</strong> {{ source }}</p>
+      <p><strong>Destination:</strong> {{ destination }}</p>
+      <p><strong>Departure Date:</strong> {{ departureDate }}</p>
+      <p><strong>Charges:</strong> {{ charges }}</p>
+    </div>
+  
+    <div *ngFor="let seat of seats">
+      <h3>Select Seat</h3>
+      <p><strong>Seat ID:</strong> {{ seat.seatId }}</p>
+      <p><strong>First AC Seats:</strong> {{ seat.firstAC }}</p>
+      <p><strong>Second AC Seats:</strong> {{ seat.secondAC }}</p>
+      <p><strong>Sleeper Seats:</strong> {{ seat.sleeper }}</p>
+      <p><strong>Total Seats:</strong> {{ seat.total }}</p>
+<!--   
+      Add a checkbox to allow seat selection
+      <input type="checkbox" (change)="selectSeat(seat)"> Select This Seat -->
+      <button routerLink="/ticket">Pay </button>
+      <hr>
+    </div>
+  </div>
+  
+  
+  
+ 

@@ -1,0 +1,111 @@
+
+
+
+<!-- <li [hidden]="!IsLoggedIn" class="nav-item"><a class="nav-link" (click)="Logout()">Logout</a></li>   
+    <div class="container">
+    <h3 class="text-center my-5 items_title">Registered Users</h3>
+    <p class="text-center text-muted mt-5 mb-0"><a href="#!"
+      class="forgot-password" routerLink="/adminDashboard"></a>
+
+
+<table class="table table-striped table-dark">
+    <thead>
+      <tr>
+      
+        <th scope="col">SeatId</th>
+        <th scope="col">BusId</th>
+        <th scope="col">FirstAC</th>
+        <th scope="col">SecondAC</th>
+        <th scope="col">Sleeper</th>
+        <th scope="col">Total</th>
+        
+
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let User of User">
+            <td>{{User.seatId}}</td>
+            <td>{{User.busId}}</td>
+            <td>{{User.firstAC}}</td>
+            <td>{{User.secondAC}}</td>
+            <td>{{User.sleeper}}</td>
+            <td>{{User.total}}</td>
+            
+        </tr> 
+        <td>
+            <a href="#" [routerLink]="['/post/', 'view']" class="btn btn-info">View</a>
+            <br><br>
+            <a href="#" [routerLink]="['/post/', 'edit']" class="btn btn-primary">Edit</a>
+            <br><br>
+            < <button type="button" (click)="deletePost(busId)" class="btn btn-danger">Delete</button> -->
+          <!-- </td>
+     
+    </tbody>
+  </table>
+  <div>
+    <p class="text-center text-muted mt-5 mb-0"><a href="#!"
+      class="forgot-password" routerLink="/adminDashboard">Go Back</a>
+  </div>
+  </div>  -->
+
+  
+<header class="bg-surface-primary border-bottom pt-6">
+  <div class="container-fluid">
+      <div class="mb-npx">
+          <div class="row align-items-center">
+              <!-- Navigation Options -->
+              <div class="col-12 text-center">
+                  <ul class="nav nav-tabs mt-4 overflow-x border-0">
+                      <li class="nav-item"><a href="/post" class="nav-link">Add Bus</a></li>
+                      <li class="nav-item"><a href="/regbuses" class="nav-link">Users</a></li>
+                      <li class="nav-item"><a href="/viewbookings" class="nav-link">Bookings</a></li>
+                       <li class="nav-item"><a href="/viewbook" class="nav-link">SeatInfo</a></li>
+                       <li class="nav-item"><a href="/showfeed" class="nav-link">feedback Info</a></li>
+                      <li class="nav-item"><a href="/Admin" class="nav-link">Logout</a></li>
+                      <!-- <li class="nav-item"><a href="/feedback" class="nav-link">Information</a></li>   -->
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+</header>
+
+  <div class="container">
+    <h3 class="text-center my-5 items_title"></h3>
+      <a href="#" routerLink="/createseat" class="btn btn-success">Create Seat</a>
+      <br>
+      <br>
+  
+  <table class="table table-striped table-dark">
+    <thead>
+      <tr>
+        <th scope="col">SeatId</th>
+        <th scope="col">BusId</th>
+        <th scope="col">FirstAC</th>
+        <th scope="col">SecondAC</th>
+        <th scope="col">Sleeper</th>
+        <th scope="col">Total</th>
+        <th width="250px">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let User of User">
+            <td>{{User.seatId}}</td>
+            <td>{{User.busId}}</td>
+            <td>{{User.firstAC}}</td>
+            <td>{{User.secondAC}}</td>
+            <td>{{User.sleeper}}</td>
+            <td>{{User.total}}</td>
+        
+        <td>
+          <a href="#"  routerLink="/viewseat"class="btn btn-info">View</a>
+          <br><br>
+          <a href="#"class="btn btn-primary">Edit</a>
+          <br><br>
+          <button type="button" class="btn btn-danger">Delete</button>
+        </td>
+      </tr> 
+       
+    </tbody>
+  </table>
+  </div>

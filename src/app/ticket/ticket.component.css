@@ -1,0 +1,241 @@
+/* Add this CSS code to your styles.css or a custom CSS file */
+
+.container {
+  margin-top: 50px;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.9);
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+.form-control {
+  border: 1px solid #ced4da;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.success-message {
+  margin-top: 1rem;
+  font-weight: bold;
+  color: #e5eee7;
+}
+
+.ticket-details {
+  margin-bottom: 20px;
+}
+
+  /* Custom CSS for Ticket Component */
+  .ticket-details {
+    background-color: #f8f9fa; /* Light gray background */
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .seat-layout-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+
+  .seat-layout-container ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  .seat-layout-container li {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .booking-message {
+    background-color: #f0ad4e; /* Yellow background for the message */
+    padding: 10px;
+    color: #fff; /* White text color */
+    border-radius: 5px;
+    margin-bottom: 15px;
+  }
+
+  .success-message {
+    background-color: #5bc0de; /* Light blue background for success message */
+    padding: 10px;
+    color: #fff; /* White text color */
+    border-radius: 5px;
+    margin-top: 15px;
+  }
+
+  /* Styling for Bank Card Form */
+  .transaction-form {
+    background-color: #fff; /* White background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  }
+
+  /* Additional styling for form elements */
+  .form-label {
+    font-weight: bold;
+  }
+
+  /* Style the Submit button */
+  .btn-primary {
+    background-color: #007bff; /* Blue background */
+    border-color: #007bff; /* Blue border color */
+  }
+
+  .btn-primary:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    border-color: #0056b3;
+  }
+
+  .btn-success {
+    background-color: #e9f2eb; /* Green background for Download button */
+    border-color: #ebeceb;
+  }
+
+  .btn-success:hover {
+    background-color: #e4eee6; /* Darker green on hover */
+    border-color: #ecedec;
+  }
+
+/* Style for Download Ticket button */
+.formbold-btn {
+  background-color: #28a745; /* Green background */
+  border: none;
+  color: #fff; /* White text color */
+  padding: 10px 20px; /* Adjust padding as needed */
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px; /* Add spacing between buttons */
+  transition: background-color 0.3s ease-in-out;
+}
+
+.formbold-btn:hover {
+  background-color: #1e7e34; /* Darker green on hover */
+}
+
+/* Style for Email button */
+.formbold-btn.email-button {
+  background-color: #007bff; /* Blue background */
+  color: #fff; /* White text color */
+  border: none;
+  padding: 10px 20px; /* Adjust padding as needed */
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.formbold-btn.email-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+/* Style for Form Container */
+.form-container {
+  background-color: #f8f9fa; /* Light gray background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+/* Style for Form Labels */
+.form-label {
+  font-weight: bold;
+  color: #333; /* Dark text color */
+}
+
+/* Style for Input Fields */
+.form-control {
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 15px;
+  width: 100%; /* Full width */
+  transition: border-color 0.3s ease-in-out;
+}
+
+.form-control:focus {
+  border-color: #007bff; /* Blue border on focus */
+}
+
+/* Style for Textarea */
+.form-control-textarea {
+  resize: vertical; /* Allow vertical resizing of textarea */
+}
+
+/* Style for Submit Button */
+.form-btn {
+  background-color: #007bff; /* Blue background */
+  border: none;
+  color: #fff; /* White text color */
+  padding: 10px 20px; /* Adjust padding as needed */
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.form-btn:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+/* CSS for Email Form */
+/* CSS for Email Form */
+.email-form {
+  width: 50%; /* Increase the width */
+  max-height: 400px; /* Decrease the max-height */
+  overflow-y: auto; /* Add scroll if content exceeds max-height */
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Rest of the CSS remains the same */
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.form-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.form-btn:hover {
+  background-color: #0056b3;
+}

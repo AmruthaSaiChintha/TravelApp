@@ -1,0 +1,111 @@
+
+
+      
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Information</title>
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Add Custom CSS -->
+    <style>
+        /* Custom CSS for styling */
+        .table-container {
+        margin-top: 30px;
+        margin-left: 50px; /* Add this line to move the table to the left */
+    }
+        /* Style the table header */
+        .table thead th {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+        }
+
+        /* Style alternating rows */
+        .table tbody tr:nth-child(odd) {
+            background-color: #f2f2f2;
+        }
+
+        /* Style table rows on hover */
+        .table tbody tr:hover {
+            background-color: #cce5ff;
+        }
+
+        /* Style the "Book Bus" button */
+        .btn-book {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        /* Add spacing around the table cells */
+        .table td, .table th {
+            padding: 10px;
+        }
+
+        /* Style images in cells */
+        .table img {
+            max-width: 100px;
+            max-height: 100px;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container table-container">
+      <table class="table table-hover table-bordered" style="width: 110% !important;">
+
+        <!-- ... table content ... -->
+
+    
+            <thead>
+                <tr>
+                    <!-- <th>Bus Id</th> -->
+                    <th>Bus Name</th>
+                    <th>Image</th>
+                    <th>Source</th>
+                    <th>Destination</th>
+                    <th>Departure Date</th>
+                    <th>Departure Time</th>
+                    <th>NoramlSeat</th>
+                    <th>Price</th>
+                    <th>PushBack</th>
+                    <th>Price</th>
+                    <th>Sleeper</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Sample data, replace with your data using ngFor -->
+                <tr *ngFor="let bus of Bus">
+                  <!-- <td>{{ bus.busId }}</td> -->
+                  <td>{{ bus.busName }}</td>
+                  <td><img src="{{ bus.image }}" width="200" height="200" alt=""></td>
+                  <td>{{ bus.source }}</td>
+                  <td>{{ bus.destination }}</td>
+                  <td>{{ bus.departureDate }}</td>
+                  <td>{{ bus.departureTime }}</td>
+                  <td>{{ bus.firstAC }}</td>
+                  <td>{{ bus.firstACPrice }}</td>
+                  <td>{{ bus.secondAC }}</td>
+                  <td>{{bus.secondACPrice}}</td>
+                  <td>{{ bus.sleeper }}</td>
+                  <td>{{ bus.sleeperPrice }}</td>
+                    <td><button class="btn btn-primary btn-book">Book Bus</button></td>
+                </tr>
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Add Bootstrap JS (optional) -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,54 @@
+
+
+<header class="bg-surface-primary border-bottom pt-6">
+  <div class="container-fluid">
+      <div class="mb-npx">
+          <div class="row align-items-center">
+              <!-- Navigation Options -->
+              <div class="col-12 text-center">
+                  <ul class="nav nav-tabs mt-4 overflow-x border-0">
+                      <li class="nav-item"><a href="/viewbuses" class="nav-link">View Buses</a></li>
+                      <li class="nav-item"><a href="/profile" class="nav-link">Ratings</a></li>
+                      <li class="nav-item"><a href="/search" class="nav-link">Search and Book</a></li>
+                      <li class="nav-item"><a [routerLink]="['/viewProfile', id]" class="nav-link">Profile</a></li>
+                     
+                      <!-- <li class="nav-item"><a href="/viewfeed" class="nav-link">Feedback</a></li> -->
+                      <!-- <li class="nav-item"><a href="/booking" class="nav-link">Bookings</a></li> -->
+                      <li class="nav-item"><a href="/login" class="nav-link">Logout</a></li>
+                      
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+</header>
+    <div class="register-card">
+      <div class="profile-header">
+          <h3 class="text-center">User Profile</h3>
+      </div>
+      <div class="profile-details">
+          <div class="profile-item">
+              <strong>User Name:</strong>
+              <span>{{ user.username }}</span>
+          </div>
+          <div class="profile-item">
+              <strong>Email:</strong>
+              <span>{{ user.email }}</span>
+          </div>
+          <div class="profile-item">
+              <strong>Password:</strong>
+              <span>{{ user.password }}</span>
+          </div>
+      </div>
+      <div class="profile-actions">
+          <div class="edit-profile-button">
+              <!-- <a class="btn btn-primary" routerLink="/editProfile/{{userId}}">Edit Profile</a><br> -->
+              <a class="btn btn-primary" routerLink="/editProfile">Edit Profile</a>
+          </div>
+          <div class="view-bookings-button">
+              <button (click)="goToUserBookings()" class="btn btn-primary">View Bookings</button>
+          </div>
+      </div>
+  </div>
+  
+  

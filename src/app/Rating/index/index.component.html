@@ -1,0 +1,36 @@
+<div class="container">
+    <h1>Hello, Admin</h1>
+    
+    <a href="#" routerLink="/post/create/" class="btn btn-success">Create New Bus</a>
+      
+    <table class="table table-striped">
+        <thead>
+              <tr>
+                <th>busId</th>
+                <th>busName</th>
+                <th>source</th>
+                <th>destination</th>
+                <th>departureDate</th>
+                <th>departureTime</th>
+                <th>charges</th>
+                <th width="250px">Action</th>
+              </tr>
+        </thead>
+        <tbody>
+              <tr *ngFor="let post of posts">
+                <td>{{ post.busId }}</td>
+                <td>{{ post.busName }}</td>
+                <td>{{ post.source }}</td>
+                <td>{{ post.destination}}</td>
+                <td>{{ post.departureDate }}</td>
+                <td>{{ post.departureTime}}</td>
+                <td>{{ post.charges}}</td>
+                <td>
+                  <a href="#" [routerLink]="['/post/', post.busId, 'view']" class="btn btn-info">View</a>
+                  <a href="#" [routerLink]="['/post/', post.busId, 'edit']" class="btn btn-primary">Edit</a>
+                  <button type="button" (click)="deletePost(post.busId)" class="btn btn-danger">Delete</button>
+                </td>
+              </tr>
+        </tbody>
+    </table>
+ </div>
