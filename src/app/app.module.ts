@@ -63,15 +63,19 @@ import { UserBookingsComponent } from './user-bookings/user-bookings.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 // import { ConComponent } from './con/con.component';
 import { BusComponent } from './bus/bus.component';
-
-
+import { ViewticketComponent } from './viewticket/viewticket.component';
+import { StarRatingComponent } from './star-rating/star-rating.component';
+// import { RoomListComponent } from './room-list/room-list.component';
+import { StarRatingPipe } from './star-rating.pipe';
+import { BuslistComponent } from './buslist/buslist.component';
 @NgModule({
   declarations: [
+
     AppComponent,
     IndexComponent,
     LoginComponent,
     NavbarComponent,
-   
+    StarRatingPipe,
        ProfileComponent,
        aboutComponent,
        searchComponent,
@@ -115,10 +119,13 @@ import { BusComponent } from './bus/bus.component';
         ViewProfileComponent,
         UserBookingsComponent,
        EditProfileComponent,
-       
+      //  RoomListComponent,
       MapComponent,
               // ConComponent,
-              BusComponent
+              BusComponent,
+              ViewticketComponent,
+              StarRatingComponent,
+              BuslistComponent
       
       
        ],

@@ -3,18 +3,16 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class SharedService {
-  private searchState: any; // Define a private variable to store shared state
+export class SharedDataService {
+  private sharedData: any;
 
   constructor() {}
 
-  // Method to set the shared state
-  setSearchState(state: any): void {
-    this.searchState = state;
+  setSharedData(data: any) {
+    this.sharedData = data;
   }
 
-  // Method to get the shared state
-  getSearchState(): any {
-    return this.searchState;
+  getSharedData() {
+    return this.sharedData;
   }
 }

@@ -4,7 +4,7 @@ import { UserService } from '../user.service';
 import { User } from '../user';
 
 @Component({
-  selector: 'app-viewitems',
+  selector: 'app-viewbuses',
   templateUrl: './viewbuses.component.html',
   styleUrls: ['./viewbuses.component.css']
 })

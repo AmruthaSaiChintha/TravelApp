@@ -1,8 +1,12 @@
-<header class="bg-surface-primary border-bottom pt-6">
+
+
+  
+
+ <header class="bg-surface-primary border-bottom pt-6"> 
     <div class="container-fluid">
         <div class="mb-npx">
             <div class="row align-items-center">
-                <!-- Navigation Options -->
+              
                 <div class="col-12 text-center">
                     <ul class="nav nav-tabs mt-4 overflow-x border-0">
                         <li class="nav-item"><a href="/viewbuses" class="nav-link">View Buses</a></li>
@@ -10,9 +14,9 @@
                         <li class="nav-item"><a href="/search" class="nav-link">Search and Book</a></li>
                         <li class="nav-item"><a [routerLink]="['/viewProfile', id]" class="nav-link">Profile</a></li>
                        
-                        <!-- <li class="nav-item"><a href="/viewfeed" class="nav-link">Feedback</a></li> -->
-                        <!-- <li class="nav-item"><a href="/booking" class="nav-link">Bookings</a></li> -->
+                      
                         <li class="nav-item"><a href="/login" class="nav-link">Logout</a></li>
+                        
                         
                     </ul>
                 </div>
@@ -113,7 +117,7 @@
                  <div class="form-group">
                      <label class="spacer-label">Spacer</label>
                      <div class="input-group">
-                         <button class="btn btn-primary" (click)="searchBuses()">Search</button>
+                        <button class="btn btn-primary" (click)="searchBuses(); hideViewBuses()">Search</button>
                      </div>
                  </div>
              </div>
@@ -138,16 +142,25 @@
                  </div>
              </div>
          </div>
-         <!-- <app-ticket></app-ticket> -->
-  
+         <br>
+         <br>
+         <br>
+         
+         <!-- <app-viewbuses *ngIf="showViewBuses"></app-viewbuses> -->
+         <!-- <app-viewbuses *ngIf="showViewBuses"></app-viewbuses> -->
+         <!-- <app-viewbuses *ngIf="showViewBuses"></app-viewbuses> -->
+         <ng-container *ngIf="showViewBuses">
+            <app-viewbuses></app-viewbuses>
+          </ng-container>
+          
 
-         <!-- <div *ngIf="showViewBuses"> -->
-            <!-- <app-viewbuses></app-viewbuses> -->
-          <!-- </div> -->
+
+
+
   
          <div class="row mt-4">
              <div class="col-md-12">
-                 <div *ngIf="showBusDetails">
+                  
                      <div *ngFor="let bus of filteredBuses">
                          <div class="card my-3">
                              <div class="card-body">
@@ -155,12 +168,12 @@
 
                                  <h6 class="card-subtitle mb-2 text-muted">
                                     <p><strong>Departure Time:</strong> {{ bus.departureTime }}</p>
-                                    <p><strong>Departure Date:</strong> {{ bus.departureDate }}</p> 
-                                    <p><strong>Bus Name:</strong> {{ bus.busName }}</p> 
-                                    <p><strong>Bus Id:</strong> {{ bus.busId }}</p> 
+                                    <p><strong>Departure Date:</strong> {{ bus.departureDate }}</p>
+                                    <p><strong>Bus Name:</strong> {{ bus.busName }}</p>
+                                    <p><strong>Bus Id:</strong> {{ bus.busId }}</p>
                                     <p><strong>First AC Price:</strong> {{ bus.firstACPrice }}</p>
                                     <p><strong>Second AC Price:</strong> {{ bus.secondACPrice }}</p>
-                                    <p><strong>Sleeper Price:</strong> {{ bus.sleeperPrice }}</p> 
+                                    <p><strong>Sleeper Price:</strong> {{ bus.sleeperPrice }}</p>
                                     <div class="total-price">
                                         <label for="totalPrice" class="price-label">Total Price:</label>
                                         <div class="price-value">
@@ -200,15 +213,17 @@
   
   
 
+      
 
- 
 
 
 
 
   
+  
 
-
+  
+  
   <!-- Only display the "Back" button when selectedBus is defined -->
 <button *ngIf="selectedBus" (click)="navigateToTicket(selectedBus)" class="formbold-btn">Back</button>
 
@@ -230,10 +245,11 @@
 
 
 
+
                              </div>
                          </div>
                      </div>
-                 </div>
+            
              </div>
          </div>
          <br>

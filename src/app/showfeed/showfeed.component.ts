@@ -7,6 +7,7 @@ import { FeeService } from '../fee.service';
   styleUrls: ['./showfeed.component.css']
 })
 export class ShowfeedComponent {
+
   User:any;
  IsLoggedIn:boolean=false
  

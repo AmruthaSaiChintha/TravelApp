@@ -44,7 +44,12 @@
               <p>totalAmount:{{totalAmount}}</p>
             </div>
           </div>
+          <button (click)="navigateBackToViewTicket()">Back to Search</button>
+          <button (click)=" goBackToSearch()">Back</button>
           <br>
+          <!-- <app-viewbuses *ngIf="showViewBuses"></app-viewbuses> -->
+          <app-viewbuses *ngIf="showViewBuses"></app-viewbuses>
+
         <!-- In your ticket.component.html template -->
           <div class="booking-message">
             <p>Please do your payment. Thank you for choosing ridetohome.com! Your seat number will be given when you check in...</p>

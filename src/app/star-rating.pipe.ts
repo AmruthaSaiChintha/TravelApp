@@ -5,9 +5,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class StarRatingPipe implements PipeTransform {
   transform(rating: number): string {
-    const filledStars = '★'.repeat(Math.floor(rating));
-    const halfStar = rating % 1 === 0.5 ? '½' : '';
-    const emptyStars = '☆'.repeat(Math.floor(5 - rating));
-    return filledStars + halfStar + emptyStars;
+    // Convert the rating to stars (you can implement your logic here)
+    const stars = '★'.repeat(rating);
+    return stars;
   }
 }

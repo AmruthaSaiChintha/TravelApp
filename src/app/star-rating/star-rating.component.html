@@ -1,0 +1,20 @@
+<!-- <div class="star-rating">
+    <span class="star" (click)="onClick(1)" [class.filled]="rating >= 1">&#9733;</span>
+    <span class="star" (click)="onClick(2)" [class.filled]="rating >= 2">&#9733;</span>
+    <span class="star" (click)="onClick(3)" [class.filled]="rating >= 3">&#9733;</span>
+    <span class="star" (click)="onClick(4)" [class.filled]="rating >= 4">&#9733;</span>
+    <span class="star" (click)="onClick(5)" [class.filled]="rating >= 5">&#9733;</span>
+  </div>
+   -->
+
+  <div class="star-rating">
+    <ng-container *ngFor="let star of stars; let i = index">
+      <span
+        class="star"
+        [class.clicked]="i < highlightedStars"
+        (click)="onStarClick(i + 1)"
+      >
+        &#9733; <!-- Unicode character for a star -->
+      </span>
+    </ng-container>
+  </div>

@@ -4,7 +4,9 @@ import jsPDF from 'jspdf';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import emailjs from '@emailjs/browser';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-
+import { SharedDataService } from '../shared-data.service';
+import {  NavigationEnd } from '@angular/router';
+import { BusService } from '../bus.service';
 interface Bus {
   charges: number;
   BusName: string;
@@ -30,12 +32,13 @@ export class ticketComponent implements OnInit {
   SecondAC:string='';
   Sleeper:string='';
   Total:string='';
+  showViewBuses: boolean = true; 
   istransactionsuccessful:Boolean | undefined;
   showEmailForm: boolean = false;
   selectedFirstAC: number = 0;
   selectedSecondAC: number = 0;
   selectedSleeper: number = 0;
-  
+  // showViewBuses: boolean = true; 
 
 form: FormGroup= this.fb.group(
   {
@@ -72,13 +75,17 @@ async send()
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private httpClient: HttpClient,private fb:FormBuilder
+    private httpClient: HttpClient,private fb:FormBuilder,private sharedDataService: SharedDataService,private busService: BusService
   ) {
+    this.showViewBuses = false; // Ensure it's hidden when navigating to the ticket page
+    
     
      
   }
   
-
+  hideViewBusesComponent() {
+    this.showViewBuses = false;
+  }
   
   downloadTicket(): void {
     console.log('Download Ticket button clicked');
@@ -172,12 +179,44 @@ async send()
       );
 
   }
+ 
+ 
+ 
+  navigateBackToViewTicket() {
+    // Create ticket data to share
+    const ticketData = {
+      ticketNumber: '12345',
+      passengerName: 'John Doe',
+      departureDate: '2023-10-15',
+      seatNumber: 'A1',
+      // Add more properties as needed
+    };
+    this.sharedDataService.setSharedData(ticketData);
 
+    // Navigate back to ViewticketComponent
+    this.router.navigate(['/viewticket']); 
+  }
+
+  goBackToSearch(){ 
+    // this.busService.notifyBuslistToHideViewBuses();
+    console.trace(); // Add this line to trace the call stack
+  this.busService.hideViewBuses();
+  this.showViewBuses = false; // Set it to false to hide the content
+  console.log('showViewBuses is now:', this.showViewBuses);
+  console.log('navigated');
+  this.showViewBuses = false;
+    this.router.navigate(['/search'], {
+      queryParams:{source: this.source, destination: this.destination, departureDate:this.departureDate
+      
+      },state: { hideViewBuses: true } 
+    });
+    console.log(this.source); 
+  }
 
 
 
   navigateToTicket() {
-    this.router.navigate(['/ticket']); // Navigate to the ticket component
+    this.router.navigate(['/ticket']); // 
   }
   submitBankAndBookingDetails() {
   const bankCredData = {
@@ -234,7 +273,7 @@ async send()
 }
  seat()
  {
-  this.router.navigate(['/selectseat']);
+  this.router.navigate(['/selectseat']); //dheeni functionality cheppu
  }
 
   selectedSeats: {
@@ -254,6 +293,15 @@ async send()
 
 
   ngOnInit(): void {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        if (event.url === '/search') {
+          this.showViewBuses = false; // Hide the app-viewbuses component
+        } else {
+          this.showViewBuses = false; // Show the app-viewbuses component for other routes
+        }
+      }
+    });
     this.route.paramMap.subscribe((params) => {
       const state = window.history.state;
 

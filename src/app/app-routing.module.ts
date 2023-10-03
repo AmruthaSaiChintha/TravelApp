@@ -42,8 +42,10 @@ import { UserBookingsComponent } from './user-bookings/user-bookings.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 // import { ConComponent } from './con/con.component';
 import { BusComponent } from './bus/bus.component';
-
-
+// import { RoomListComponent } from './room-list/room-list.component';
+import { ViewticketComponent } from './viewticket/viewticket.component';
+import { StarRatingComponent } from './star-rating/star-rating.component';
+import { BuslistComponent } from './buslist/buslist.component';
 const routes: Routes = [
 
 
@@ -51,6 +53,7 @@ const routes: Routes = [
   {path:"login",component:LoginComponent},
   {path:"profile",component:ProfileComponent},
   {path:"Admin",component:AdminComponent},
+  // {path:"roomlist",component:RoomListComponent},
   {path:"about",component:aboutComponent},
   {path:"booknow",component:booknowComponent},
   {path:"regbuses",component:regbusesComponent},
@@ -83,6 +86,7 @@ const routes: Routes = [
   {path:"showfeed",component:ShowfeedComponent},
   {path:"booking",component:BookingComponent},
   {path:"cancelticket",component:CancelticketComponent},
+  {path:"starrating",component:StarRatingComponent},
   {path:"refund",component:RefundComponent},
   // {path:"con",component:ConComponent},
   {path:"map",component:MapComponent},
@@ -106,6 +110,10 @@ const routes: Routes = [
 {path:'bus',component:BusComponent},
 { path: 'search/:searchTerm', component: searchComponent },
 { path: 'ticket', component: ticketComponent },
+{path:'viewticket',component:ViewticketComponent},
+{path:'buslist',component:BuslistComponent},
+{ path: '', redirectTo: '/buslist', pathMatch: 'full' },
+
 { path: '', redirectTo: '/search', pathMatch: 'full' }, // Default route
 // { path: '**', component: NotFoundComponent }, 
 

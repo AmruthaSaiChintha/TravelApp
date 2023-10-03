@@ -1,7 +1,12 @@
+
+
+
+
 import { Component, OnInit } from '@angular/core';
-import { FeedService } from '../feed.service'
+import { FeedService } from '../feed.service';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators} from '@angular/forms';   
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { StarRatingComponent } from '../star-rating/star-rating.component';
 
 @Component({
   selector: 'app-createfeed',
@@ -9,53 +14,45 @@ import { FormGroup, FormControl, Validators} from '@angular/forms';
   styleUrls: ['./createfeed.component.css']
 })
 export class CreatefeedComponent implements OnInit {
-
-   
-    
   form!: FormGroup;
-    
-  /*------------------------------------------
-  --------------------------------------------
-  Created constructor
-  --------------------------------------------
-  --------------------------------------------*/
+
   constructor(
     public postService: FeedService,
-    private router: Router
-  ) { }
-    
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
+    private router: Router,
+    private formBuilder: FormBuilder
+  ) {}
+
   ngOnInit(): void {
-    this.form = new FormGroup({
+    this.form = this.formBuilder.group({
+      BusName: new FormControl('', Validators.required),
       Text: new FormControl('', Validators.required),
-      Rating: new FormControl('', Validators.required)
-  });
+      Rating: [null, Validators.required],// Initialize rating to 0
+    });
+    console.log('Form:', this.form);
+    console.log('Rating control:', this.form.get('Rating'));
   }
-    
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
-  get f(){
+  
+
+  get f() {
     return this.form.controls;
   }
-    
-  /**
-   * Write code on Method
-   *
-   * @return response()
-   */
-  submit(){
+
+  // submit() {
+  //   console.log(this.form.value);
+  //   this.postService.create(this.form.value).subscribe((res: any) => {
+  //     console.log('User created successfully!');
+  //     this.router.navigateByUrl('/customerdashboard');
+  //     this.form.reset();
+     
+  //   });
+  // }
+  submit() {
     console.log(this.form.value);
-    this.postService.create(this.form.value).subscribe((res:any) => {
-         console.log('User created successfully!');
-         this.router.navigateByUrl('/viewfeed');
-    })
+    this.postService.create(this.form.value).subscribe((res: any) => {
+      console.log('User created successfully!');
+      this.form.reset();
+      this.router.navigate(['/customerDashboard']); // Use router.navigate to navigate to the desired route
+    });
   }
   
 }

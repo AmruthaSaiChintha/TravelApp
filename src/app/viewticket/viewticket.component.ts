@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, Validators } from '@angular/forms';
 import { state } from '@angular/animations';
 import { DataService } from '../data.service';
 import { UserService } from '../user.service';
@@ -13,10 +13,7 @@ import { FormBuilder, FormControl} from '@angular/forms';
 import { SearchDataService } from '../search-data.service';
 import { NewDataService } from '../new-data-service.service';
 import { SharedDataService } from '../shared-data.service';
-import { BusService } from '../bus.service';
-import {  NavigationEnd } from '@angular/router';
-
-
+// import { FormDataService } from '../form-data.service'
 
 interface Bus {
   charges: number;
@@ -33,17 +30,18 @@ interface Bus {
   secondACPrice: number;
   sleeperPrice: number;
   total: number;
-  availableFirstACSeats: number; // Add available seats property
+  availableFirstACSeats: number;
   [key: string]: any;
 }
 
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  selector: 'app-viewticket',
+  templateUrl: './viewticket.component.html',
+  styleUrls: ['./viewticket.component.css']
 })
-export class searchComponent implements OnInit {
-  BusName = '';
+export class ViewticketComponent implements OnInit {
+  filteredBuses: Bus[] = [];
+BusName = '';
   source = '';
   BusId = '';
   destination = '';
@@ -52,7 +50,6 @@ export class searchComponent implements OnInit {
   showBusDetails: boolean = true;
   totalAmount = '';
   buses: Bus[] = [];
-  filteredBuses: any[] = [];
   // filteredBuses: Bus[] = [];
   sourceSuggestions: string[] = [];
   destinationSuggestions: string[] = [];
@@ -75,10 +72,10 @@ export class searchComponent implements OnInit {
   busName: any;
   ticketConfirmed: boolean | undefined;
   userId!: number;
-  // showViewBuses: boolean = false; 
   IsLoggedIn!: boolean;
   IsAdmin!: boolean;
   IsCustomer!: boolean;
+  viewTicketData: any;
   id: any;
   users!: User[];
   constructor(
@@ -87,8 +84,11 @@ export class searchComponent implements OnInit {
     private route: ActivatedRoute,private dataService: DataService,
     private userService:UserService, private appStateService: AppStateService,
     private formBuilder: FormBuilder, private searchDataService: SearchDataService,
-    private newDataService: NewDataService,private sharedDataService: SharedDataService,private busservice:BusService
-  ) {}
+    private newDataService: NewDataService,
+    private formDataService: FormDataService,private sharedDataService: SharedDataService
+  ) {
+   
+  }
 
 
 
@@ -102,57 +102,37 @@ export class searchComponent implements OnInit {
   }
   
   ngOnInit(): void {
-  
-    let showViewBuses = true; // Initialize it to true by default
+    this.source = localStorage.getItem('source') || '';
+    this.destination = localStorage.getItem('destination') || '';
+    this.departureDate = localStorage.getItem('departureDate') || '';
+    // this.viewTicketData = this.sharedDataService.getSharedData();
+    const formData = this.formDataService.getFormData();
+    this.form = this.formBuilder.group({
+      source: [formData.source || ''],
+      destination: [formData.destination || ''],
+      departureDate: [formData.departureDate || ''],
+      departureTime: [formData.departureTime || ''],
+    });
 
-    const currentUrl = this.router.url;
-    if (currentUrl.includes("source") && currentUrl.includes("destination")) {
-      showViewBuses = false;
-    }
-  
-    const currentNavigation = this.router.getCurrentNavigation();
-    const navigationState = currentNavigation?.extras.state;
-  
-    if (navigationState && navigationState['hideViewBuses']) {
-      showViewBuses = false;
-    }
-  
-    this.showViewBuses = showViewBuses; // Assign the local variable to the class-level variable
-     // Retrieve the stored search query from local storage
-    //  const storedSearchQuery = this.newDataService.getData('searchQuery');
-    //  if (storedSearchQuery) {
-     
-    //    this.source = storedSearchQuery.source;
-    //    this.destination = storedSearchQuery.destination;
-    //    this.departureDate = storedSearchQuery.departureDate;
-    //    this.departureTime = storedSearchQuery.departureTime;
-    //    this.busName = storedSearchQuery.busName;
-    //    this.totalAmount = storedSearchQuery.totalAmount;
-      
-    //  }
-    // this.loadBusDetails();
-    
-    // this.searchDataService.searchData$.subscribe((searchData) => {
-      // Access and use the search data here
-      // console.log(searchData);
-    // });
-    // this.filteredBuses = this.busservice.getFilteredBuses();
-    this.filteredBuses = this.busservice.getFilteredBuses();
-    this.route.queryParams.subscribe(queryParams => {
+    this.route.queryParamMap.subscribe(queryParams => {
+      const state = queryParams.get('state');
+      if (state) {
+        this.filteredBuses = JSON.parse(state).filteredBuses;
+      }
+    });
+    this.route.queryParams.subscribe((queryParams) => {
       // Retrieve selected buses and seats from query parameters
       this.selectedFirstAC = queryParams['selectedFirstACSeats'] || 0;
       this.selectedSecondAC = queryParams['selectedSecondACSeats'] || 0;
       this.selectedSleeper = queryParams['selectedSleeperSeats'] || 0;
 
       // Retrieve other data as needed
-     
       this.source = queryParams['source'] || '';
       this.destination = queryParams['destination'] || '';
-      this.departureDate = queryParams['departureDate'] || ''; 
+      this.departureDate = queryParams['departureDate'] || '';
       this.departureTime = queryParams['departureTime'] || '';
+      this.busName = queryParams['busName'] || '';
       this.totalAmount = queryParams['totalAmount'] || 0;
-      // this.searchBuses();
-     
     });
     this.IsLoggedIn=localStorage.getItem("User")!=null ;
     var x = localStorage.getItem("User");
@@ -163,8 +143,11 @@ export class searchComponent implements OnInit {
     this.IsCustomer = JSON.parse(x).value.username=='Customer';
     this.id = JSON.parse(x).value.userId;
     console.log(this.id);
-   
+    
+    
+
  }
+
 //  this.load();
 this.userService.getAll().subscribe((data: User[])=>{
   this.users = data;
@@ -191,16 +174,16 @@ this.userService.getAll().subscribe((data: User[])=>{
   loadBusDetails(): void {
     this.http.get<Bus[]>('https://localhost:44331/api/BusDetails').subscribe((buses: Bus[]) => {
       this.buses = buses; //idhi? 
-      // Initialize other properties like maxFirstACSeats, maxSecondACSeats, etc. service lekunda yela chesaru
+      // Initialize other properties like maxFirstACSeats, maxSecondACSeats, etc.
     });
   }
+ 
   updateLocalStorage() {
     localStorage.setItem('source', this.source);
     localStorage.setItem('destination', this.destination);
     localStorage.setItem('departureDate', this.departureDate);
     // Add other properties as needed
   }
-
 
   getMaxSeats(seatType: string, bus: Bus): number {
     return bus[seatType] ? parseInt(bus[seatType], 10) : 0;
@@ -280,7 +263,7 @@ this.userService.getAll().subscribe((data: User[])=>{
   filterSource(): void {
     this.sourceSuggestions = this.getSuggestions(this.source, 'source');
     this.showBusDetails = false;
-    this.selectedBus = undefined; //total bus details source and destination thoo kalipi function ledha
+    this.selectedBus = undefined;
   }
 
   filterDestination(): void {
@@ -343,7 +326,7 @@ this.userService.getAll().subscribe((data: User[])=>{
     
   }
   
-  searchBuses(): void { 
+  searchBuses(): void {
     this.searchDataService.setSearchData({
       source: this.source,
       destination: this.destination,
@@ -404,26 +387,15 @@ this.userService.getAll().subscribe((data: User[])=>{
       alert('No buses found for this route and date!');
       return; // Don't navigate if no buses are found
     }
-    this.busservice.setFilteredBuses(this.filteredBuses);
-    console.log('localdata')
-    this.updateLocalStorage();
-    console.log(' this.updateLocalStorage();');
+  
     console.log('Navigating to viewticket with data:', this.filteredBuses);
-    this.router.navigate(['/search'], {
-      queryParams: {source: this.source, destination: this.destination}
-    });
-    // this.router.navigate(['/viewticket'], {
-
-    //   queryParams: {
-    //     state: JSON.stringify({ filteredBuses: this.filteredBuses }),
-       
-    //   },
-    // });
     this.updateLocalStorage();
-
-
-
-    
+    this.router.navigate(['/viewticket'], {
+      queryParams: {
+        state: JSON.stringify({ filteredBuses: this.filteredBuses }),
+        
+      },
+    });
     
   }
 
@@ -549,7 +521,6 @@ this.userService.getAll().subscribe((data: User[])=>{
       const totalPrice = this.calculateTotalPrice(bus);
       console.log(this.source);
       this.router.navigate(['/ticket'], {
-        
         state: {
           selectedFirstACSeats: this.selectedSeats[bus.busId].selectedFirstAC,
           selectedSecondACSeats: this.selectedSeats[bus.busId].selectedSecondAC,
@@ -629,3 +600,4 @@ this.userService.getAll().subscribe((data: User[])=>{
   
 
 }
+

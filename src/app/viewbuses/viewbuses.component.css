@@ -66,4 +66,39 @@
     background-color: #0056b3;
     color: #fff;
   }
+  .star-rating {
+    display: flex;
+    align-items: center;
+  }
   
+  .star {
+    width: 20px;
+    height: 20px;
+    background-color: gold;
+    margin-right: 5px;
+  }
+  
+  .star.empty {
+    background-color: gray;
+  }
+  /* Define the star shape */
+/* Define the star shape */
+.star {
+  width: 20px; /* Adjust the star size */
+  height: 20px;
+  background-color: gold; /* Change the star color */
+  clip-path: polygon(
+    50% 0%, 61.8% 35.3%, 95.1% 35.3%, 68.2% 57.3%, 79.4% 91.2%,
+    50% 70.6%, 20.6% 91.2%, 31.8% 57.3%, 5% 35.3%, 38.2% 35.3%
+  );
+  display: inline-block;
+}
+
+/* Adjust the color of stars based on the rating */
+.star-rating .star:nth-child(-n + 4) {
+  background-color: gold; /* Color the first 4 stars gold for a 4-star rating */
+}
+
+.star-rating .star:nth-child(n + 5) {
+  background-color: gray; /* Color the remaining star gray for a 4-star rating */
+}

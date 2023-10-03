@@ -1,0 +1,14 @@
+.star-rating {
+    display: inline-block;
+  }
+  
+  .star {
+    font-size: 24px;
+    cursor: pointer;
+    color: #ccc; /* Default color for unclicked stars */
+  }
+  
+  .star.clicked {
+    color: gold; /* Color for clicked stars */
+  }
+  
