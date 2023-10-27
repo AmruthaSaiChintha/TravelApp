@@ -26,6 +26,7 @@ interface Bus {
 })
 export class BusService {
   filteredBuses: Bus[] = [];
+  private selectedSeats: { [busId: number]: any } = {};
   // private hideViewBusesSubject = new Subject<void>();
   // private hideViewBusesSubject = new BehaviorSubject<boolean>(false);
   private hideViewBusesSubject = new BehaviorSubject<boolean>(false);
@@ -38,7 +39,13 @@ export class BusService {
     return this.hideViewBusesSubject.asObservable();
   }
 
+  setSelectedSeats(busId: number, seats: any): void {
+    this.selectedSeats[busId] = seats;
+  }
 
+  getSelectedSeats(busId: number): any {
+    return this.selectedSeats[busId];
+  }
   notifyBuslistToHideViewBuses() {
     this.hideViewBusesSubject.next(true);
   }

@@ -22,7 +22,7 @@ export class CancelticketComponent {
   IsCustomer!: boolean;
   id: any;
   users!: User[];
-
+ 
   constructor(private httpClient: HttpClient,private userService:UserService) {}
 
   submitDetails() {

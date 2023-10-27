@@ -1,71 +1,59 @@
 
 
-<header class="bg-surface-primary border-bottom pt-6">
-  <div class="container-fluid">
-      <div class="mb-npx">
-          <div class="row align-items-center">
-              <!-- Navigation Options -->
-              <div class="col-12 text-center">
-                  <ul class="nav nav-tabs mt-4 overflow-x border-0">
-                    <li class="nav-item"><a href="/post" class="nav-link">Add Bus</a></li>
-                    <li class="nav-item"><a href="/regbuses" class="nav-link">Users</a></li>
-                    <li class="nav-item"><a href="/viewbookings" class="nav-link">Bookings</a></li>
-                     <li class="nav-item"><a href="/refund" class="nav-link">RefundReq</a></li>
-                     <li class="nav-item"><a href="/showfeed" class="nav-link">feedback Info</a></li>
-                    <li class="nav-item"><a href="/Admin" class="nav-link">Logout</a></li>
-                  </ul>
-              </div>
-          </div>
-      </div>
-  </div>
-</header>
+<nav class="navbar">
+  <ul class="nav">
+    <li class="nav-item">
+      <a [routerLink]="['/search']" class="nav-link">Search and Book</a>
+    </li>
+    <li class="nav-item">
+      <a [routerLink]="['/viewProfile', id]" class="nav-link">Profile</a>
+    </li>
+    <li class="nav-item">
+      <a [routerLink]="['/viewbookings']" class="nav-link">Cancel</a>
+    </li>
+    <li class="nav-item">
+      <a [routerLink]="['/login']" class="nav-link">Logout</a>
+    </li>
+  </ul>
+</nav>
 <div class="container">
-    <h3 class="text-center my-5 items_title">Bookings</h3>
-    <p class="text-center text-muted mt-5 mb-0"><a href="#!"
-      class="forgot-password" routerLink="/adminDashboard"></a>
+  <h3 class="text-center my-5 items_title">User Bookings</h3>
 
-
-<table class="table table-striped table-dark">
-    <thead>
-      <tr>
-      
-        
-            <th>BookingId</th>
-            <th>UserId</th>
-            <th>BusId</th>
-            <!-- <th>UserName</th> -->
-            <th>BusName</th>
-            <!-- <th>ContactNo</th> -->
-            <th>Source</th>
-            <th>Destination</th>
-            <th>DepartureDate</th>
-            <!-- <th>charges</th>    -->
-          
-        
-      </tr>
-    </thead>
-    <tbody>
+  <table class="table table-striped table-dark">
+      <thead>
+          <tr>
+              <th>BookingId</th>
+              <th>UserId</th>
+              <th>BusId</th>
+              <th>BusName</th>
+              <th>Source</th>
+              <th>Destination</th>
+              <th>DepartureDate</th>
+              <th>FareAmount</th>
+              <th>Action</th>
+          </tr>
+      </thead>
+      <tbody>
         <tr *ngFor="let Bus of Bus">
-            <td>{{Bus.bookingId}}</td>
-            <td>{{Bus.userId}}</td>
-            <td>{{Bus.busId}}</td>
-            <!-- <td>{{Bus.userName}}</td> -->
-            <td>{{Bus.busName}}</td>
-            <!-- <th>{{Bus.contactNo}}</th> -->
-            <th>{{Bus.source}}</th>
-            <td>{{Bus.destination}}</td>
-            <td>{{Bus.departureDate}}</td>
-            <!-- <td>{{Bus.charges}}</td> -->
-           
-        </tr>
-     
-    </tbody>
+          <td>{{Bus.bookingId}}</td>
+          <td>{{Bus.userId}}</td>
+          <td>{{Bus.busId}}</td>
+          <td>{{Bus.busName}}</td>
+          <th>{{Bus.source}}</th>
+          <td>{{Bus.destination}}</td>
+          <td>{{Bus.departureDate}}</td>
+          <td>{{Bus.fareAmount}}</td>
+              <td>
+                  <div class="d-flex flex-column">
+                      <a href="#" routerLink="/cancelticket" class="btn btn-danger mb-2">Cancel</a>
+                      <a href="#" routerLink="/map" class="btn btn-primary">Track</a>
+                  </div>
+              </td>
+          </tr>
+      </tbody>
   </table>
-  <!-- <div>
-    <p class="text-center text-muted mt-5 mb-0"><a href="#!"
-      class="forgot-password" routerLink="/adminDashboard">Go Back</a>
-  </div> -->
-  </div>
+</div>
+
 
 
   
@@ -82,20 +70,13 @@
     <thead>
       <tr>
       
-        <!-- <th scope="col">Last</th>
-        <th scope="col">Handle</th> -->
+
       </tr>
     </thead>
     <tbody>
-        <!-- <tr *ngFor="let User of User">
-            <td>{{User.username}}</td>
-            <td>{{User.email}}</td>
-        </tr>  -->
+     
      
     </tbody>
   </table>
-  <!-- <div>
-    <p class="text-center text-muted mt-5 mb-0"><a href="#!"
-      class="forgot-password" routerLink="/adminDashboard">Go Back</a>
-  </div> -->
+ 
   </div>

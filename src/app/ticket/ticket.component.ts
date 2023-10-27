@@ -7,6 +7,20 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { SharedDataService } from '../shared-data.service';
 import {  NavigationEnd } from '@angular/router';
 import { BusService } from '../bus.service';
+import { state } from '@angular/animations';
+import { DataService } from '../data.service';
+import { UserService } from '../user.service';
+import { User } from '../user';
+import { AppStateService } from '../app-state.service';
+
+import { FormDataService } from '../form-data.service';
+// import { FormBuilder, FormControl} from '@angular/forms';
+import { SearchDataService } from '../search-data.service';
+import { NewDataService } from '../new-data-service.service';
+// import { SharedDataService } from '../shared-data.service';
+// import { BusService } from '../bus.service';
+// import {  NavigationEnd } from '@angular/router';
+// import { DataService } from '../data.service';
 interface Bus {
   charges: number;
   BusName: string;
@@ -14,7 +28,18 @@ interface Bus {
   destination: string;
   departureTime: string;
   departureDate: string;
+  busId: number;
+  firstACSeats: number;
+  secondACSeats: number;
+  sleeperSeats: number;
+  firstACPrice: number;
+  secondACPrice: number;
+  sleeperPrice: number;
+  total: number;
+  availableFirstACSeats: number;
+  [key: string]: any;
 }
+
 
 @Component({
   selector: 'app-ticket',
@@ -35,11 +60,73 @@ export class ticketComponent implements OnInit {
   showViewBuses: boolean = true; 
   istransactionsuccessful:Boolean | undefined;
   showEmailForm: boolean = false;
+ 
+  // showViewBuses: boolean = true; 
+  // BusName = '';
+  // source = '';
+  // BusId = '';
+  // destination = '';
+  // departureDate: string = new Date().toISOString().split('T')[0]; 
+  // departureTime: string = '';
+  showBusDetails: boolean = true;
+  totalAmount = '';
+  buses: Bus[] = [];
+  filteredBuses: any[] = [];
+  sourceSuggestions: string[] = [];
+  destinationSuggestions: string[] = [];
+  chargesSort: string = 'all';
+  departureTimesort: string = 'all';
+  firstACSort: string = 'all';
+  // form!: FormGroup;
+  showAllBuses: boolean = true;
+ 
+  filteredBusesData: Bus[] = [];
+  firstACPrice: number = 0;
+  secondACPrice: number = 0;
+  sleeperPrice: number = 0;
+
+  maxFirstACSeats: { [busId: number]: number } = {};
+  maxSecondACSeats: { [busId: number]: number } = {};
+  maxSleeperSeats: { [busId: number]: number } = {};
+  busName: any;
+  ticketConfirmed: boolean | undefined;
+  userId!: number;
+
+  IsLoggedIn!: boolean;
+  departureDateISOString: string = ''; // Store the departure date in ISO format
+  departureDateFormatted: string = ''; // Store the departure date in "day month year" format
+
+  IsAdmin!: boolean;
+  IsCustomer!: boolean;
+  id: any;
+  selectedSeats: {
+    firstACSeats: number;
+    secondACSeats: number;
+    sleeperSeats: number;
+    [key: string]: number;
+  } = {
+    firstACSeats: 0,
+    secondACSeats: 0,
+    sleeperSeats: 0,
+  };
+  
   selectedFirstAC: number = 0;
   selectedSecondAC: number = 0;
   selectedSleeper: number = 0;
-  // showViewBuses: boolean = true; 
 
+  
+  // ...
+  
+  // Access selectedSecondAC through selectedSeats
+  // const secondACValue = this.selectedSeats.secondACSeats;
+  // ...
+  
+  // selectedFirstAC: number = 0;
+
+  // selectedSecondAC: number = 0;
+  // selectedSleeper: number = 0;
+  
+  users!: User[];
 form: FormGroup= this.fb.group(
   {
     from_name:'',
@@ -75,17 +162,24 @@ async send()
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private httpClient: HttpClient,private fb:FormBuilder,private sharedDataService: SharedDataService,private busService: BusService
+    private httpClient: HttpClient,private fb:FormBuilder,private sharedDataService: SharedDataService,private busService: BusService,
+    private userService:UserService, private appStateService: AppStateService,
+    private formBuilder: FormBuilder, private searchDataService: SearchDataService,
+    private newDataService: NewDataService,private dataservice:DataService,private http:HttpClient
   ) {
     this.showViewBuses = false; // Ensure it's hidden when navigating to the ticket page
     
-    
+   
      
   }
   
   hideViewBusesComponent() {
     this.showViewBuses = false;
   }
+  Bus:any;
+  // selectedBus: Bus = {} as Bus; 
+
+  selectedBus: Bus | undefined = undefined;
   
   downloadTicket(): void {
     console.log('Download Ticket button clicked');
@@ -121,6 +215,7 @@ async send()
   cardNumber: any;
   ExpiryDate: string = '';
   ybl: any;
+
   showSuccessMessage: boolean = false;
 
   submitBankDetails() {
@@ -179,6 +274,7 @@ async send()
       );
 
   }
+
  
  
  
@@ -276,20 +372,20 @@ async send()
   this.router.navigate(['/selectseat']); //dheeni functionality cheppu
  }
 
-  selectedSeats: {
-    firstACSeats: number;
-    secondACSeats: number;
-    sleeperSeats: number;
-  } = {
-    firstACSeats: 0,
-    secondACSeats: 0,
-    sleeperSeats: 0
-  };
+  // selectedSeats: {
+  //   firstACSeats: number;
+  //   secondACSeats: number;
+  //   sleeperSeats: number;
+  // } = {
+  //   firstACSeats: 0,
+  //   secondACSeats: 0,
+  //   sleeperSeats: 0
+  // };
 
   charges: number = 0;
 
-  busName: string = '';
-  totalAmount: number = 0;
+  // busName: string = '';
+  // totalAmount: number = 0;
 
 
   ngOnInit(): void {
@@ -302,6 +398,39 @@ async send()
         }
       }
     });
+    this.filteredBuses = this.busService.getFilteredBuses();
+    this.route.queryParams.subscribe(queryParams => {
+      this.selectedFirstAC = queryParams['selectedFirstACSeats'] || 0;
+      this.selectedSecondAC = queryParams['selectedSecondACSeats'] || 0;
+      this.selectedSleeper = queryParams['selectedSleeperSeats'] || 0;
+     this.source = queryParams['source'] || '';
+      this.destination = queryParams['destination'] || '';
+      this.departureDate = queryParams['departureDate'] || ''; 
+      this.departureTime = queryParams['departureTime'] || '';
+      this.totalAmount = queryParams['totalAmount'] || 0;
+     });
+    this.IsLoggedIn=localStorage.getItem("User")!=null ;
+    var x = localStorage.getItem("User");
+   if(x){
+    this.IsAdmin=JSON.parse(x).value.username=='Admin';
+    // this.id=JSON.parse(x).userId;
+    // console.log(this.id)
+    this.IsCustomer = JSON.parse(x).value.username=='Customer';
+    this.id = JSON.parse(x).value.userId;
+    console.log(this.id);
+   
+ }
+ 
+this.userService.getAll().subscribe((data: User[])=>{
+  this.users = data;
+  console.log(this.users);
+
+})
+this.dataservice.sendGetRequest().subscribe((data: any)=>{
+  console.log(data);
+  this.Bus= data;
+}) 
+
     this.route.paramMap.subscribe((params) => {
       const state = window.history.state;
 
@@ -323,10 +452,102 @@ async send()
 
   
   
+  loadBusDetails(): void {
+    this.http.get<Bus[]>('https://localhost:44331/api/BusDetails').subscribe((buses: Bus[]) => {
+      this.buses = buses; 
+      // Initialize other properties like maxFirstACSeats, maxSecondACSeats, etc. service lekunda yela chesaru
+    });
+  }
+  
+ 
+    
+  // selectedBus: Bus | undefined = undefined;
 
+  // Define a dictionary to store selected seat information for each bus
+  // selectedSeats: { [busId: string]: { selectedFirstAC: number, selectedSecondAC: number, selectedSleeper: number } } = {};
 
+  bookSeats(bus: Bus): void {
+    const selectedInfo = {
+      selectedFirstAC: this.selectedFirstAC,
+      selectedSecondAC: this.selectedSecondAC,
+      selectedSleeper: this.selectedSleeper
+    };
+  
+    // Check if at least one seat is selected
+    // if (
+    //   selectedInfo.selectedFirstAC === 0 &&
+    //   selectedInfo.selectedSecondAC === 0 &&
+    //   selectedInfo.selectedSleeper === 0
+    // ) {
+    //   alert('Please select at least one seat.');
+    //   return;
+    // }
+  
+    // Confirm the tickets
+    this.ticketConfirmed = true;
+    const busId = 123; // Replace with the actual busId
+    // const selectedSeats = {
+    //   selectedFirstAC: selectedInfo.selectedFirstAC,
+    //   selectedSecondAC: selectedInfo.selectedSecondAC,
+    //   selectedSleeper: selectedInfo.selectedSleeper,
+    // };
+  
+    // this.busService.setSelectedSeats(busId, selectedSeats);
+    // Further logic here...
+  }
+  
+  
+  
 
+  fetchSeatDetails(busId: number, selectedInfo: any) {
+    // Fetch the bus details
+    this.http.get<Bus>(`https://localhost:44331/api/BusDetails/${busId}`).subscribe(
+      (response) => {
+        console.log('Fetched Seat details', response);
 
+        const availableSeats = {
+          firstAC: response['firstAC'],
+          secondAC: response['secondAC'],
+          sleeper: response['sleeper'],
+        };
+
+        // Calculate the updated available seats
+        const updatedSeats = {
+          firstAC: availableSeats.firstAC - selectedInfo.selectedFirstAC,
+          secondAC: availableSeats.secondAC - selectedInfo.selectedSecondAC,
+          sleeper: availableSeats.sleeper - selectedInfo.selectedSleeper,
+        };
+
+        console.log('Remaining Seats:', updatedSeats);
+
+        // Update the remaining seats
+        this.updateAvailableSeats(busId, updatedSeats);
+      },
+      (error) => {
+        console.error('Failed to fetch seat details:', error);
+        // Log the error response for further investigation
+        console.error('Error Response:', error.error);
+      }
+    );
+  }
+
+  updateAvailableSeats(busId: number, updatedSeats: any) {
+    console.log('updateAvailableSeats method called');
+    console.log(updatedSeats);
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    this.http.put(`https://localhost:44331/api/BusDetails/update-seats/${busId}`, updatedSeats, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) })
+
+      .subscribe((res) => {
+        console.log(res);
+      },
+      (err) => {
+        console.log("Error:", err)
+      });
+
+  }
 
 
 

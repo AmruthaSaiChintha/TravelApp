@@ -132,19 +132,39 @@ body {
   justify-content: center;
   align-items: center;
 }
-.nav-tabs {
-  background-color: #007bff; /* Set a background color */
-  border: none;
+/* Navbar Styles */
+.navbar {
+  background-color: #000; /* Set the background color to black */
+  color: #fff; /* Set the text color to white */
+  padding: 10px 0;
 }
 
-.nav-tabs .nav-item .nav-link {
-  color: #fff; /* Text color */
+.navbar ul.nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.nav-tabs .nav-item .nav-link:hover {
-  background-color: #0056b3; /* Hover color */
+.navbar ul.nav li.nav-item {
+  display: inline;
+  margin-right: 20px; /* Adjust the spacing between navbar items */
+}
+
+.navbar ul.nav li.nav-item a.nav-link {
   color: #fff;
+  text-decoration: none;
+  font-weight: bold;
 }
+
+.navbar ul.nav li.nav-item a.nav-link:hover {
+  color: #ffcc00; /* Change color on hover */
+}
+
+/* Center align the content within the navbar */
+.navbar .container-fluid {
+  text-align: center;
+}
+
 .form-control {
   border: 1px solid #ccc; /* Add a border to form inputs */
 }
@@ -186,4 +206,36 @@ body {
 .btn-primary {
   background-color: #007bff;
   color: #fff;
+}
+/* Navbar Styles */
+.navbar {
+  background-color: #393333; /* Set the background color to black */
+  color: #fff; /* Set the text color to white */
+  padding: 10px 0;
+}
+
+.navbar ul.nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar ul.nav li.nav-item {
+  display: inline;
+  margin-right: 20px; /* Adjust the spacing between navbar items */
+}
+
+.navbar ul.nav li.nav-item a.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar ul.nav li.nav-item a.nav-link:hover {
+  color: #ffcc00; /* Change color on hover */
+}
+
+/* Center align the content within the navbar */
+.navbar {
+  text-align: center;
 }

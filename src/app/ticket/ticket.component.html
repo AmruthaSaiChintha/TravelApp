@@ -46,6 +46,19 @@
           </div>
           <button (click)="navigateBackToViewTicket()">Back to Search</button>
           <button (click)=" goBackToSearch()">Back</button>
+          <!-- <button [ngClass]="{'btn btn-success': selectedBus === Bus, 'btn btn-primary': selectedBus !== Bus}"
+        (click)="bookSeats(Bus)">Please Click to Confirm Tickets</button> -->
+
+
+        <!-- Assuming your selectedBus property contains a 'busId' -->
+<!-- <button [ngClass]="{'btn btn-success': selectedBus.busId === bus.busId, 'btn btn-primary': selectedBus.busId !== bus.busId}">
+  sairam
+</button> -->
+
+
+          <!-- <button [ngClass]="{'btn btn-success': selectedBus === bus, 'btn btn-primary': selectedBus !== bus}"
+          class="btn mr-3"
+          (click)="bookSeats(bus)">Please Click to Confirm Tickets</button> -->
           <br>
           <!-- <app-viewbuses *ngIf="showViewBuses"></app-viewbuses> -->
           <app-viewbuses *ngIf="showViewBuses"></app-viewbuses>
@@ -242,3 +255,39 @@
 
 
            
+
+
+
+
+<form *ngIf="showEmailForm" (submit)="send()" class="email-form">
+  <div class="form-group">
+    <label for="coursename" class="form-label">coursename</label>
+    <input
+      type="text"
+      id="coursename"
+      name="coursename"
+      class="form-control"
+      [value]="coursename"
+      readonly
+    />
+  </div>
+  <div class="form-group">
+    <label for="coursefee" class="form-label">coursefee</label>
+    <input
+      type="text"
+      id="coursefee"
+      name="coursefee"
+      class="form-control"
+      [value]="coursefee"
+      readonly
+    />
+  </div>
+  
+
+ 
+
+ 
+  <div class="form-group">
+    <button type="submit" class="form-btn">Send</button>
+  </div>
+</form>

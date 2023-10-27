@@ -7,7 +7,7 @@ import { DataService } from '../data.service';
 import { UserService } from '../user.service';
 import { User } from '../user';
 import { AppStateService } from '../app-state.service';
-// import { LocalStorageService } from '@angular/common';
+
 import { FormDataService } from '../form-data.service';
 import { FormBuilder, FormControl} from '@angular/forms';
 import { SearchDataService } from '../search-data.service';
@@ -47,13 +47,12 @@ export class searchComponent implements OnInit {
   source = '';
   BusId = '';
   destination = '';
-  departureDate: string = '';
+  departureDate: string = new Date().toISOString().split('T')[0]; 
   departureTime: string = '';
   showBusDetails: boolean = true;
   totalAmount = '';
   buses: Bus[] = [];
   filteredBuses: any[] = [];
-  // filteredBuses: Bus[] = [];
   sourceSuggestions: string[] = [];
   destinationSuggestions: string[] = [];
   chargesSort: string = 'all';
@@ -63,6 +62,7 @@ export class searchComponent implements OnInit {
   showAllBuses: boolean = true;
   selectedFirstAC: number = 0;
   selectedSecondAC: number = 0;
+  
   selectedSleeper: number = 0;
   filteredBusesData: Bus[] = [];
   firstACPrice: number = 0;
@@ -75,8 +75,11 @@ export class searchComponent implements OnInit {
   busName: any;
   ticketConfirmed: boolean | undefined;
   userId!: number;
-  // showViewBuses: boolean = false; 
+
   IsLoggedIn!: boolean;
+  departureDateISOString: string = ''; // Store the departure date in ISO format
+  departureDateFormatted: string = ''; // Store the departure date in "day month year" format
+
   IsAdmin!: boolean;
   IsCustomer!: boolean;
   id: any;
@@ -102,6 +105,7 @@ export class searchComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    
   
     let showViewBuses = true; // Initialize it to true by default
 
@@ -117,26 +121,7 @@ export class searchComponent implements OnInit {
       showViewBuses = false;
     }
   
-    this.showViewBuses = showViewBuses; // Assign the local variable to the class-level variable
-     // Retrieve the stored search query from local storage
-    //  const storedSearchQuery = this.newDataService.getData('searchQuery');
-    //  if (storedSearchQuery) {
-     
-    //    this.source = storedSearchQuery.source;
-    //    this.destination = storedSearchQuery.destination;
-    //    this.departureDate = storedSearchQuery.departureDate;
-    //    this.departureTime = storedSearchQuery.departureTime;
-    //    this.busName = storedSearchQuery.busName;
-    //    this.totalAmount = storedSearchQuery.totalAmount;
-      
-    //  }
-    // this.loadBusDetails();
-    
-    // this.searchDataService.searchData$.subscribe((searchData) => {
-      // Access and use the search data here
-      // console.log(searchData);
-    // });
-    // this.filteredBuses = this.busservice.getFilteredBuses();
+    this.showViewBuses = showViewBuses; 
     this.filteredBuses = this.busservice.getFilteredBuses();
     this.route.queryParams.subscribe(queryParams => {
       // Retrieve selected buses and seats from query parameters
@@ -344,6 +329,8 @@ this.userService.getAll().subscribe((data: User[])=>{
   }
   
   searchBuses(): void { 
+    const formattedDepartureDate = this.formatDepartureDate(this.departureDateISOString);
+
     this.searchDataService.setSearchData({
       source: this.source,
       destination: this.destination,
@@ -410,15 +397,15 @@ this.userService.getAll().subscribe((data: User[])=>{
     console.log(' this.updateLocalStorage();');
     console.log('Navigating to viewticket with data:', this.filteredBuses);
     this.router.navigate(['/search'], {
-      queryParams: {source: this.source, destination: this.destination}
+      // queryParams: {source: this.source, destination: this.destination,departureDate: this.departureDate}
+      queryParams: {
+        source: this.source,
+        destination: this.destination,
+        departureDate: formattedDepartureDate,
+        
+      },
     });
-    // this.router.navigate(['/viewticket'], {
-
-    //   queryParams: {
-    //     state: JSON.stringify({ filteredBuses: this.filteredBuses }),
-       
-    //   },
-    // });
+   
     this.updateLocalStorage();
 
 
@@ -426,6 +413,12 @@ this.userService.getAll().subscribe((data: User[])=>{
     
     
   }
+  formatDepartureDate(departureDate: string): string {
+    const dateObj = new Date(departureDate);
+    const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+    return dateObj.toLocaleDateString(undefined, options);
+  }
+  
 
 
   bookSeats(bus: Bus): void {
@@ -443,10 +436,16 @@ this.userService.getAll().subscribe((data: User[])=>{
 
     // Confirm the tickets
     this.ticketConfirmed = true;
-
-    // You can also add any additional logic here for ticket booking if needed.
-
-    // Fetch seat details and update available seats
+    const busId = 123; // Replace with the actual busId
+    const selectedSeats = {
+      selectedFirstAC: 2,
+      selectedSecondAC: 3,
+      selectedSleeper: 1,
+    };
+    
+   
+    this.busservice.setSelectedSeats(busId, selectedSeats);
+   
     this.fetchSeatDetails(bus.busId, selectedInfo);
   }
 
@@ -548,6 +547,9 @@ this.userService.getAll().subscribe((data: User[])=>{
       this.selectedBus = bus;
       const totalPrice = this.calculateTotalPrice(bus);
       console.log(this.source);
+      const date = new Date(); // Create a Date object
+      const isoString = date.toISOString(); // Convert it to an ISO string
+      console.log(isoString);
       this.router.navigate(['/ticket'], {
         
         state: {
@@ -564,6 +566,7 @@ this.userService.getAll().subscribe((data: User[])=>{
           totalAmount: totalPrice, //intha intha code yevar rayamnaar ba
           // Add other details you want to pass here
         },
+          queryParams: { departureDate: this.departureDate }
       });
 
       // Log the selected bus information

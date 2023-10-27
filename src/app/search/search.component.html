@@ -1,34 +1,30 @@
-
-
+<nav class="navbar">
+    <ul class="nav">
+      <li class="nav-item">
+        <a [routerLink]="['/search']" class="nav-link">Search and Book</a>
+      </li>
+      <li class="nav-item">
+        <a [routerLink]="['/viewProfile', id]" class="nav-link">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a [routerLink]="['/booking']" class="nav-link">Cancel</a>
+      </li>
+      <li class="nav-item">
+        <a [routerLink]="['/login']" class="nav-link">Logout</a>
+      </li>
+    </ul>
+  </nav>
   
 
- <header class="bg-surface-primary border-bottom pt-6"> 
-    <div class="container-fluid">
-        <div class="mb-npx">
-            <div class="row align-items-center">
-              
-                <div class="col-12 text-center">
-                    <ul class="nav nav-tabs mt-4 overflow-x border-0">
-                        <li class="nav-item"><a href="/viewbuses" class="nav-link">View Buses</a></li>
-                        <li class="nav-item"><a href="/profile" class="nav-link">Ratings</a></li>
-                        <li class="nav-item"><a href="/search" class="nav-link">Search and Book</a></li>
-                        <li class="nav-item"><a [routerLink]="['/viewProfile', id]" class="nav-link">Profile</a></li>
-                       
-                      
-                        <li class="nav-item"><a href="/login" class="nav-link">Logout</a></li>
-                        
-                        
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-  </header>
+
+
+
+
  <!DOCTYPE html>
  <html lang="en">
  <head>
      <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="viewport" content="width=device-width">
      <title>Bus Search</title>
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
      <style>
@@ -80,7 +76,7 @@
  </head>
  
  <body>
-     <main class="col-md-10 ml-sm-auto col-lg-19 px-md-4">
+     <main class="col-md-11 ml-sm-auto col-lg-20 px-md-2">
          <!-- <h1 class="text-center mt-4">Bus Search</h1> -->
          <hr>
  
@@ -110,6 +106,9 @@
              <div class="col-md-2">
                  <div class="form-group">
                      <label for="departureDate">Departure Date</label>
+                     <!-- Update the date input field -->
+<!-- <input type="date" [(ngModel)]="departureDate" name="departureDate" required> -->
+<!-- <p>{{ departureDate | date:'yyyy-MM-dd' }}</p> -->
                      <input type="date" class="form-control" id="departureDate" [(ngModel)]="departureDate">
                  </div>
              </div>
@@ -149,10 +148,15 @@
          <!-- <app-viewbuses *ngIf="showViewBuses"></app-viewbuses> -->
          <!-- <app-viewbuses *ngIf="showViewBuses"></app-viewbuses> -->
          <!-- <app-viewbuses *ngIf="showViewBuses"></app-viewbuses> -->
-         <ng-container *ngIf="showViewBuses">
-            <app-viewbuses></app-viewbuses>
-          </ng-container>
-          
+         <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <ng-container *ngIf="showViewBuses">
+                    <div class="col-md-15"> <!-- Adjust the column width as needed -->
+                        <app-viewbuses></app-viewbuses>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
 
 
 
