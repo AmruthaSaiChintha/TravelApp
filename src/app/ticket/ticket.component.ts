@@ -60,7 +60,8 @@ export class ticketComponent implements OnInit {
   showViewBuses: boolean = true; 
   istransactionsuccessful:Boolean | undefined;
   showEmailForm: boolean = false;
- 
+  coursename: string = '';
+  coursefee: number = 0;
   // showViewBuses: boolean = true; 
   // BusName = '';
   // source = '';
