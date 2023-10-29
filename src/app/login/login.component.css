@@ -7,6 +7,10 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
+.invalid-password {
+  border: 2px solid red;
+}
+
 
 .login-card .profile-img-card {
   width: 100px;

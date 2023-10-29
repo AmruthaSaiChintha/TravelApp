@@ -14,7 +14,7 @@ export class AdminComponent {
   constructor() {}
 
   Admin(): void {
-    if (this.user === 'admin' && this.pass === 'password') {
+    if (this.user === 'admin@gmail.com' && this.pass === 'password') {
       // Successful login
       //  alert('');
       // Redirect to admin page
