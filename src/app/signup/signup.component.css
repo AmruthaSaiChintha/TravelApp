@@ -1,0 +1,19 @@
+.register-card .btn.btn-signup:hover, .register-card .btn.btn-signup:active, .register-card .btn.btn-signup:focus {
+  background: rgb(12, 97, 33);
+}
+
+.register-card .forgot-password {
+  color: rgb(104, 145, 162);
+}
+
+.register-card .forgot-password:hover, .register-card .forgot-password:active, .register-card .forgot-password:focus {
+  color: rgb(12, 97, 33);
+}
+
+.invalid-field {
+  border: 1px solid red;
+}
+
+.required-field:not(.ng-valid):not(.ng-untouched) {
+  border: 1px solid red;
+}

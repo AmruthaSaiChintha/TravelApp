@@ -1,0 +1,46 @@
+<nav class="navbar">
+    <ul class="nav">
+      <li class="nav-item">
+        <a [routerLink]="['/search']" class="nav-link">Search and Book</a>
+      </li>
+      <li class="nav-item">
+        <a [routerLink]="['/viewProfile', id]" class="nav-link">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a [routerLink]="['/viewbookings']" class="nav-link">Cancel</a>
+      </li>
+      <li class="nav-item">
+        <a [routerLink]="['/login']" class="nav-link">Logout</a>
+      </li>    
+    </ul>
+  </nav>
+  <div class="user-profile-card">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlf3O9QTILqIH7-4nY1FI_eKrLz6H6mCWewCIMTS9sKb2OSg-iTwqNCZA145yuxZMfpEU&usqp=CAU" alt="User Image" class="profile-image">
+    <div class="profile-content">
+      <h3 class="profile-title">User Profile</h3>
+      <div class="profile-details">
+        <div class="profile-item">
+          <strong>User Name:</strong>
+          <span>{{ user.username }}</span>
+        </div>
+        <div class="profile-item">
+          <strong>Email:</strong>
+          <span>{{ user.email }}</span>
+        </div>
+        <div class="profile-item">
+          <strong>Password:</strong>
+          <span>*********</span> <!-- For security, don't display the password -->
+        </div>
+      </div>
+      <div class="profile-actions">
+        <div class="edit-profile-button">
+          <a class="btn btn-primary" routerLink="/editProfile">Edit Profile</a>
+        </div>
+        <div class="view-bookings-button">
+          <button (click)="goToUserBookings()" class="btn btn-primary">View Bookings</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  

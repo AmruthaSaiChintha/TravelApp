@@ -1,0 +1,82 @@
+
+
+<nav class="navbar">
+  <ul class="nav">
+    <li class="nav-item">
+      <a [routerLink]="['/search']" class="nav-link">Search and Book</a>
+    </li>
+    <li class="nav-item">
+      <a [routerLink]="['/viewProfile', id]" class="nav-link">Profile</a>
+    </li>
+    <li class="nav-item">
+      <a [routerLink]="['/viewbookings']" class="nav-link">Cancel</a>
+    </li>
+    <li class="nav-item">
+      <a [routerLink]="['/login']" class="nav-link">Logout</a>
+    </li>
+  </ul>
+</nav>
+<div class="container">
+  <h3 class="text-center my-5 items_title">User Bookings</h3>
+
+  <table class="table table-striped table-dark">
+      <thead>
+          <tr>
+              <th>BookingId</th>
+              <th>UserId</th>
+              <th>BusId</th>
+              <th>BusName</th>
+              <th>Source</th>
+              <th>Destination</th>
+              <th>DepartureDate</th>
+              <!-- <th>FareAmount</th> -->
+              <th>Action</th>
+          </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let Bus of Bus">
+          <td>{{Bus.bookingId}}</td>
+          <td>{{Bus.userId}}</td>
+          <td>{{Bus.busId}}</td>
+          <td>{{Bus.busName}}</td>
+          <th>{{Bus.source}}</th>
+          <td>{{Bus.destination}}</td>
+          <td>{{Bus.departureDate}}</td>
+          <!-- <td>{{Bus.fareamount}}</td> -->
+              <td>
+                  <div class="d-flex flex-column">
+                      <a href="#" routerLink="/cancelticket" class="btn btn-danger mb-2">Cancel</a>
+                      <a href="#" routerLink="/map" class="btn btn-primary">Track</a>
+                  </div>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+
+
+
+  
+
+
+
+  <div class="container">
+    <h3 class="text-center my-5 items_title"></h3>
+    <p class="text-center text-muted mt-5 mb-0"><a href="#!"
+      class="forgot-password" routerLink="/adminDashboard"></a>
+
+
+<table class="table table-striped table-dark">
+    <thead>
+      <tr>
+      
+
+      </tr>
+    </thead>
+    <tbody>
+     
+     
+    </tbody>
+  </table>
+ 
+  </div>

@@ -1,0 +1,16 @@
+/* Highlight color for active links */
+.nav-item.active a {
+    background-color: #007bff; /* Change to your desired highlight color */
+    color: #fff; /* Text color for highlighted item */
+  }
+  
+  /* Hover effect for dropdown links */
+  .dropdown-item:hover {
+    background-color: #6a9ed2; /* Change to your desired hover color */
+  }
+  
+  /* Remove default underline from links */
+  .nav-link {
+    text-decoration: none;
+  }
+  

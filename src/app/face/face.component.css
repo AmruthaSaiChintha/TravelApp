@@ -1,0 +1,148 @@
+/* Styling for the title */
+.items_title {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  /* Styling for the container */
+  .container {
+    margin-top: 2rem;
+  }
+  
+  /* Styling for the card */
+  .items_card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Styling for the table */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table th, .table td {
+    padding: 0.5rem;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Styling for alternate table rows */
+  .table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Styling for the delete icon */
+  .del_icon {
+    color: red;
+    cursor: pointer;
+  }
+  /* Styling for the title */
+.items_title {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  /* Styling for the container */
+  .container {
+    margin-top: 2rem;
+  }
+  
+  /* Styling for the card */
+  .items_card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Styling for the table */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table th, .table td {
+    padding: 0.5rem;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Styling for alternate table rows */
+  .table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Styling for the delete icon */
+  .del_icon {
+    color: red;
+    cursor: pointer;
+  }
+  /* Styling for the title */
+.items_title {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  /* Styling for the container */
+  .container {
+    margin-top: 2rem;
+  }
+  
+  /* Styling for the card */
+  .items_card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Styling for the table */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table th, .table td {
+    padding: 0.5rem;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Styling for alternate table rows */
+  .table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Styling for the delete icon */
+  .del_icon {
+    color: red;
+    cursor: pointer;
+  }
+  
+  /* Styling for the well elements */
+  .well {
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Background images for the well elements */
+  .well-1 {
+    background-image: url("../../assets/img/admin.jpg"); /* Replace with your image URL */
+    background-size: cover;
+  }
+  
+  .well-2 {
+    background-image: url("../../assets/img/admin.jpg"); /* Replace with your image URL */
+    background-size: cover;
+  }
+  

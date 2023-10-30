@@ -1,0 +1,64 @@
+<!-- search.component.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+  <div class="container">
+    <h1 class="my-4 text-center">Search Buses</h1>
+  
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="source">Source</label>
+          <input type="text" class="form-control" id="source" [(ngModel)]="source" placeholder="Enter Source" (input)="filterSource()">
+          <ul class="autocomplete-list">
+            <li *ngFor="let suggestion of sourceSuggestions" (click)="selectSuggestion('source', suggestion)">{{ suggestion }}</li>
+          </ul>
+        </div>
+      </div>
+  
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="destination">Destination</label>
+          <input type="text" class="form-control" id="destination" [(ngModel)]="destination" placeholder="Enter Destination" (input)="filterDestination()">
+          <ul class="autocomplete-list">
+            <li *ngFor="let suggestion of destinationSuggestions" (click)="selectSuggestion('destination', suggestion)">{{ suggestion }}</li>
+          </ul>
+        </div>
+      </div>
+  
+      <div class="col-md-4">
+        <button class="btn btn-primary mt-4" (click)="searchBuses()">Search Buses</button>
+      </div>
+    </div>
+  
+    <hr>
+  
+    <div *ngIf="filteredBuses.length > 0">
+      <div *ngFor="let bus of filteredBuses">
+        <div class="card my-3">
+          <div class="card-body">
+            <h5 class="card-title">{{bus.source}} - {{bus.destination}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Departure Time: {{bus.departureTime}} | Departure Date: {{bus.departureDate}}</h6>
+            <!-- <button [ngClass]="{'btn btn-success': selectedBus === bus, 'btn btn-primary': selectedBus !== bus}" class="btn mr-3" (click)="continueWith(bus)">Do Payment</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+
+</body>
+</html>
+
+
+<!-- <section class="hero">
+  <div class="hero-content">
+      <h2>Exciting offers on Bus Booking Online</h2>
+      <p>Get exciting bus booking offers across India on our bus booking app. Book bus tickets quickly and easily.</p>
+ 
+  </div>
+</section> -->

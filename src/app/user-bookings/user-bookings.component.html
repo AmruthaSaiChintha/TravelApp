@@ -1,0 +1,51 @@
+<nav class="navbar">
+  <ul class="nav">
+    <li class="nav-item">
+      <a [routerLink]="['/search']" class="nav-link">Search and Book</a>
+    </li>
+    <li class="nav-item">
+      <a [routerLink]="['/viewProfile', id]" class="nav-link">Profile</a>
+    </li>
+    <li class="nav-item">
+      <a [routerLink]="['/booking']" class="nav-link">Cancel</a>
+    </li>
+    <li class="nav-item">
+      <a [routerLink]="['/login']" class="nav-link">Logout</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="container">
+  <h2 class="text-center my-3">Bookings</h2>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Booking ID</th>
+          <th>Bus Name</th>
+          <th>Source</th>
+          <th>Destination</th>
+          <th>Departure Date & Time</th>
+          <th>Fare Amount</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let booking of userBookings">
+          <td>{{ booking.bookingId }}</td>
+          <td>{{ booking.busName }}</td>
+          <td>{{ booking.source }}</td>
+          <td>{{ booking.destination }}</td>
+          <td>{{ booking.departureDate }}<br>{{ booking.departureTime }}</td>
+          <td>$ {{ booking.fareAmount }}</td>
+          <td>
+            <div class="d-flex flex-column">
+              <a href="#" routerLink="/cancelticket" class="btn btn-danger mb-2">Cancel</a>
+              <a href="#" routerLink="/map" class="btn btn-primary">Track</a>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

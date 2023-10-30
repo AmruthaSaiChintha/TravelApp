@@ -1,0 +1,88 @@
+<nav class="navbar">
+  <ul class="nav">
+    <li class="nav-item">
+      <a [routerLink]="['/search']" class="nav-link">Search and Book</a>
+    </li>
+    <li class="nav-item">
+      <a [routerLink]="['/viewProfile', id]" class="nav-link">Profile</a>
+    </li>
+    <li class="nav-item">
+      <a [routerLink]="['/viewbookings']" class="nav-link">Cancel</a>
+    </li>
+    <li class="nav-item">
+      <a [routerLink]="['/login']" class="nav-link">Logout</a>
+    </li>
+  </ul>
+</nav>
+<div class="container">
+  <!-- ... your navigation menu ... -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mt-5">
+        <div class="card transaction-form">
+          <div class="card-body">
+            <h2 class="card-title">Enter your Details</h2>
+            <form (ngSubmit)="submitDetails()" #bankForm="ngForm">
+              <!-- UserName -->
+              <div class="form-group" [ngClass]="{'has-error': userName.touched && userName.dirty && userName.invalid}">
+                <label for="UserName" class="form-label">UserName:</label>
+                <input type="text" id="UserName" name="UserName" [(ngModel)]="UserName" class="form-control" required #userName="ngModel">
+                <div *ngIf="userName.touched && userName.dirty && userName.hasError('required')" class="text-danger">UserName is required.</div>
+              </div>
+
+              <!-- Email -->
+              <div class="form-group" [ngClass]="{'has-error': email.touched && email.dirty && email.invalid}">
+                <label for="Email" class="form-label">Email:</label>
+                <input type="email" id="Email" name="Email" [(ngModel)]="Email" class="form-control" required #email="ngModel">
+                <div *ngIf="email.touched && email.dirty && email.hasError('required')" class="text-danger">Email is required.</div>
+                <div *ngIf="email.touched && email.dirty && email.hasError('email')" class="text-danger">Invalid email format.</div>
+              </div>
+
+              <!-- Contact -->
+              <div class="form-group" [ngClass]="{'has-error': contact.touched && contact.dirty && contact.invalid}">
+                <label for="Contact" class="form-label">Contact:</label>
+                <input type="text" id="Contact" name="Contact" [(ngModel)]="Contact" class="form-control" required #contact="ngModel">
+                <div *ngIf="contact.touched && contact.dirty && contact.hasError('required')" class="text-danger">Contact is required.</div>
+              </div>
+
+              <!-- Image -->
+              <div class="form-group" [ngClass]="{'has-error': image.touched && image.dirty && image.invalid}">
+                <label for="Image" class="form-label">Image URL:</label>
+                <input type="url" id="Image" name="Image" [(ngModel)]="Image" class="form-control" required #image="ngModel">
+                <div *ngIf="image.touched && image.dirty && image.hasError('required')" class="text-danger">Image URL is required.</div>
+                <div *ngIf="image.touched && image.dirty && image.hasError('pattern')" class="text-danger">Invalid URL format.</div>
+              </div>
+
+              <!-- AccountNo -->
+              <div class="form-group" [ngClass]="{'has-error': accountNo.touched && accountNo.dirty && accountNo.invalid}">
+                <label for="AccountNo" class="form-label">AccountNo:</label>
+                <input type="text" id="AccountNo" name="AccountNo" [(ngModel)]="AccountNo" class="form-control" required #accountNo="ngModel">
+                <div *ngIf="accountNo.touched && accountNo.dirty && accountNo.hasError('required')" class="text-danger">AccountNo is required.</div>
+              </div>
+
+              <button type="submit" class="btn btn-primary">Submit</button>
+
+              <!-- Success message conditionally displayed -->
+              
+
+              <!-- Error message for empty form submission -->
+              <div *ngIf="bankForm.submitted && bankForm.invalid" class="text-danger">Please fill in all the required fields.</div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- Success message column -->
+      <div class="col-md-6 mt-5">
+        <div *ngIf="showSuccessMessage" class="success-message">
+          <h2>Success!</h2>
+          <p>Your refund request has been sent and will be processed in 7 business days.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+  

@@ -1,0 +1,78 @@
+<p>createseat works!</p>
+<div class="container">
+    <h1>Create New Course</h1>
+  
+    <a href="#" routerLink="/post/index" class="btn btn-primary">Back</a>
+        
+    <form [formGroup]="form" (ngSubmit)="submit()">
+  
+        
+        <div class="form-group">
+            <label for="BusId">BusId:</label>
+            <textarea
+                formControlName="BusId"
+                id="BusId" 
+                type="text" 
+                class="form-control">
+            </textarea>
+
+            <div *ngIf="f['BusId'].touched && f['BusId'].invalid" class="alert alert-danger">
+                <div *ngIf="f['BusId'].errors && f['BusId'].errors['required']">busName is required.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="FirstAC">FirstAC:</label>
+            <textarea
+                formControlName="FirstAC"
+                id="FirstAC" 
+                type="text" 
+                class="form-control">
+            </textarea>
+
+            <div *ngIf="f['FirstAC'].touched && f['FirstAC'].invalid" class="alert alert-danger">
+                <div *ngIf="f['FirstAC'].errors && f['FirstAC'].errors['required']">busName is required.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="SecondAC">SecondAC:</label>
+            <textarea
+                formControlName="SecondAC"
+                id="SecondAC" 
+                type="text" 
+                class="form-control">
+            </textarea>
+
+            <div *ngIf="f['SecondAC'].touched && f['SecondAC'].invalid" class="alert alert-danger">
+                <div *ngIf="f['SecondAC'].errors && f['SecondAC'].errors['required']">destination is required.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Sleeper">Sleeper:</label>
+            <textarea
+                formControlName="Sleeper"
+                id="Sleeper" 
+                type="text" 
+                class="form-control">
+            </textarea>
+
+            <div *ngIf="f['Sleeper'].touched && f['Sleeper'].invalid" class="alert alert-danger">
+                <div *ngIf="f['Sleeper'].errors && f['Sleeper'].errors['required']">departureDate is required.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Total">Total</label>
+            <textarea
+                formControlName="Total"
+                id="Total" 
+                type="text" 
+                class="form-control">
+            </textarea>
+
+            <div *ngIf="f['Total'].touched && f['Total'].invalid" class="alert alert-danger">
+                <div *ngIf="f['Total'].errors && f['Total'].errors['required']">departureTime is required.</div>
+            </div>
+        </div>
+  
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
+    </form>
+</div>

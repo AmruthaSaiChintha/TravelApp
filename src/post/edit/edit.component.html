@@ -1,0 +1,93 @@
+<div class="container">
+    <h1>Update User</h1>
+   
+    <a href="#" routerLink="/post/index" class="btn btn-primary">Back</a>
+          
+    <form [formGroup]="form" (ngSubmit)="submit()">
+    
+        <div class="form-group">
+            <label for="busName">busName:</label>
+            <input 
+                formControlName="busName"
+                id="busName" 
+                type="text" 
+                [(ngModel)]="post.busName"
+                class="form-control" />
+            <div *ngIf="f['busName'].touched && f['busName'].invalid" class="alert alert-danger">
+                <div *ngIf="f['busName'].errors && f['busName'].errors['required']">busname is required.</div>
+            </div>
+        </div>
+           
+        <div class="form-group">
+            <label for="source">source</label>
+            <input 
+                formControlName="source"
+                id="source" 
+                type="text" 
+                [(ngModel)]="post.source"
+                class="form-control" />
+            <div *ngIf="f['source'].touched && f['source'].invalid" class="alert alert-danger">
+                <div *ngIf="f['source'].errors && f['source'].errors['required']">source is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="destination">destination</label>
+            <input 
+                formControlName="destination"
+                id="destination" 
+                type="destination"
+                [(ngModel)]="post.destination"
+                class="form-control" />
+            <div *ngIf="f['destination'].touched && f['destination'].invalid" class="alert alert-danger">
+                <div *ngIf="f['destination'].errors && f['destination'].errors['required']">destination is required.</div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="departureDate">departureDate</label>
+            <input 
+                formControlName="departureDate"
+                id="departureDate" 
+                type="departureDate"
+                [(ngModel)]="post.departureDate"
+                class="form-control" />
+            <div *ngIf="f['departureDate'].touched && f['departureDate'].invalid" class="alert alert-danger">
+                <div *ngIf="f['departureDate'].errors && f['departureDate'].errors['required']">departuredate is required.</div>
+            </div>
+        </div>
+       
+        <div class="form-group">
+            <label for="departureTime">departureTime</label>
+            <input 
+                formControlName="departureTime"
+                id="departureTime" 
+                type="departureTime"
+                [(ngModel)]="post.departureTime"
+                class="form-control" />
+            <div *ngIf="f['departureTime'].touched && f['departureTime'].invalid" class="alert alert-danger">
+                <div *ngIf="f['departureTime'].errors && f['departureTime'].errors['required']">departuretime is required.</div>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="form-group">
+            <label for="charges">charges</label>
+            <input 
+                formControlName="charges"
+                id="charges" 
+                type="text"
+                [(ngModel)]="post.charges" 
+                class="form-control" />
+            <div *ngIf="f['charges'].touched && f['charges'].invalid" class="alert alert-danger">
+                <div *ngIf="f['charges'].errors && f['charges'].errors['required']">UserType is required.</div>
+            </div>
+        </div>
+         
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Update</button>
+    </form>
+</div>

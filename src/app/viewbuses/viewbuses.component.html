@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Information</title>
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Add Custom CSS -->
+    <style>
+        /* Custom CSS for styling */
+        .table-container {
+            margin-top: 30px;
+            margin-left: 90px; /* Increase the left margin if needed */
+            /* Remove margin-right to allow the table to adjust to container width */
+            margin-right: 100px;
+        }
+
+        /* Style the table header */
+        .table thead th {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+        }
+
+        /* Style alternating rows */
+        .table tbody tr:nth-child(odd) {
+            background-color: #f2f2f2;
+        }
+
+        /* Style table rows on hover */
+        .table tbody tr:hover {
+            background-color: #cce5ff;
+        }
+
+        /* Style the "Book Bus" button */
+        .btn-book {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        /* Add spacing around the table cells */
+        .table td, .table th {
+            padding: 10px;
+        }
+        .table thead th {
+        background-color: #373232;
+        color: #fff;
+        text-align: center;
+    }
+        /* Style images in cells */
+        .table img {
+            max-width: 150px;
+            max-height: 150px;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container table-container">
+      <table class="table table-hover table-bordered" style="width: 110% !important;">
+
+        <!-- ... table content ... -->
+
+    
+            <thead>
+                <tr>
+                    <!-- <th>Bus Id</th> -->
+                    <th>BusName</th>
+                    <br>
+                    <th>Image</th>
+                    <th>Source</th>
+                    <th>Destination</th>
+                    <th>Departure Date</th>
+                    
+                    <th>DepartureTime</th>
+                    <th>NoramlSeat</th>
+                    <th>Price</th>
+                    <th>PushBack</th>
+                    <th>Price</th>
+                    <th>Sleeper</th>
+                    <th>Price</th>
+                    <th>Rating</th>
+                    <!-- <th>Action</th> -->
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Sample data, replace with your data using ngFor -->
+                <tr *ngFor="let bus of Bus">
+                  <!-- <td>{{ bus.busId }}</td> -->
+                  <td>{{ bus.busName }}</td>
+                  <br>
+                  <td><img src="{{ bus.image }}" width="200" height="200" alt=""></td>
+                  <td>{{ bus.source }}</td>
+                  <td>{{ bus.destination }}</td>
+                  <td>{{ bus.departureDate }}</td>
+                  <td>{{ bus.departureTime }}</td>
+                  <td>{{ bus.firstAC }}</td>
+                  <td>{{ bus.firstACPrice }}</td>
+                  <td>{{ bus.secondAC }}</td>
+                  <td>{{bus.secondACPrice}}</td>
+                  <td>{{ bus.sleeper }}</td>
+                  <td>{{ bus.sleeperPrice }}</td>
+                  <td>
+                    <div class="star-rating">
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="star empty"></div>
+                      </div>
+                </td>
+                    <!-- <td><button class="btn btn-primary btn-book">Book Bus</button></td> -->
+                </tr>
+            
+            </tbody>
+        </table>
+    </div>
+
+   
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Information</title>
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Add Custom CSS -->
+    <style>
+      .table-container {
+            width: 200vw; /* Set width to 100% of the viewport width */
+            margin: 0; /* Remove all margins */
+            padding: 0; /* Remove all padding */
+        }
+        /* Style the table header */
+        .table thead th {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+        }
+
+        /* Style alternating rows */
+        .table tbody tr:nth-child(odd) {
+            background-color: #f2f2f2;
+        }
+
+        /* Style table rows on hover */
+        .table tbody tr:hover {
+            background-color: #cce5ff;
+        }
+
+        /* Style the "Book Bus" button */
+        .btn-book {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        /* Remove padding around the table cells */
+        .table td, .table th {
+            padding: 10px;
+        }
+        .table thead th {
+            background-color: #2a1e1e;
+            color: #fff;
+            text-align: center;
+        }
+
+        /* Style images in cells */
+        .table img {
+            max-width: 100px;
+            max-height: 100px;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+     
+    </div>
+
+   
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

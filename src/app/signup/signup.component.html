@@ -1,0 +1,187 @@
+<section class="vh-100 bg-light">
+  <div class="container h-100">
+    <div class="row justify-content-center align-items-center h-100">
+      <div class="col-lg-10 col-xl-10">
+        <div class="card text-dark" style="border-radius: 10px;">
+          <div class="card-body p-md-3">
+            <div class="row justify-content-center">
+              <div class="col-md-3 col-lg-3 col-xl-5 order-1 order-lg-1">
+                <h1 class="text-center fw-bold mb-5 mx-1 mx-md-4 mt-4">Register</h1>
+                <div class="alert alert-danger" *ngIf="showAlert">
+                  Please fill in all required fields.
+                </div>
+                <form (ngSubmit)="submit()" [formGroup]="form">
+                  <div class="row">
+                    <div class="col-md-7 form-group">
+                      <input
+                        formControlName="userName"
+                        type="text"
+                        class="form-control required-field"
+                        id="userName"
+                        required
+                        pattern="[a-zA-Z]*"
+                        placeholder="UserName"
+                        autofocus
+                        [ngClass]="{'invalid-field': f['userName'].invalid && f['userName'].touched}"
+                      />
+                      <div *ngIf="f['userName'].touched && f['userName'].hasError('required')">
+                        <small>UserName is required.</small>
+                      </div>
+                      <div *ngIf="f['userName'].touched && f['userName'].hasError('pattern')">
+                        <small>Numbers are not allowed in the UserName field.</small>
+                      </div>
+                    </div>
+                  </div>
+                 <!-- ... Other form fields ... -->
+
+                 <div class="row">
+                  <div class="col-md-7 form-group">
+                    <input
+                      formControlName="email"
+                      type="email"
+                      class="form-control required-field"
+                      id="inputEmail"
+                      required
+                      placeholder="Email address"
+                      autofocus
+                      [ngClass]="{'invalid-field': f['email'].invalid && f['email'].touched || emailExists}"
+                      (blur)="checkEmail()"
+                    />
+                    <div *ngIf="f['email'].touched && f['email'].hasError('required')">
+                      <small>Email is required.</small>
+                    </div>
+                    <div *ngIf="f['email'].touched && f['email'].hasError('pattern')">
+                      <small>Invalid email format. Email should include a valid domain (e.g., '@gmail.com').</small>
+                    </div>
+                    <div *ngIf="emailExists">
+                      <small>Email already exists. Please use a different email.</small>
+                    </div>
+                  </div>
+                </div>
+
+
+                  <div class="row">
+                    <div class="col-md-7 form-group">
+                      <input
+                        formControlName="password"
+                        type="password"
+                        class="form-control required-field"
+                        id="inputPassword"
+                        required
+                        minlength="6"
+                        placeholder="Password"
+                        [ngClass]="{'invalid-field': f['password'].invalid && f['password'].touched}"
+                      />
+                      <div *ngIf="f['password'].touched && f['password'].hasError('required')">
+                        <small>Password is required.</small>
+                      </div>
+                      <div *ngIf="f['password'].touched && f['password'].hasError('minlength')">
+                        <small>Password should be at least 6 characters long.</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-7 form-group">
+                      <input
+                        formControlName="confirmPassword"
+                        type="password"
+                        class="form-control required-field"
+                        id="cPassword"
+                        required
+                        minlength="6"
+                        placeholder="Confirm Password"
+                        [ngClass]="{'invalid-field': f['confirmPassword'].invalid && f['confirmPassword'].touched}"
+                      />
+                      <div *ngIf="f['confirmPassword'].touched && f['confirmPassword'].hasError('required')">
+                        <small>Confirm Password is required.</small>
+                      </div>
+                      <div *ngIf="f['confirmPassword'].touched && f['confirmPassword'].hasError('minlength')">
+                        <small>Confirm Password should be at least 6 characters long.</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-7 form-group">
+                      <input
+                        formControlName="phoneNumber"
+                        type="text"
+                        class="form-control required-field"
+                        id="phoneNumber"
+                        required
+                        pattern="[0-9]*"
+                        minlength="10"
+                        maxlength="10"
+                        placeholder="PhoneNumber"
+                        autofocus
+                        [ngClass]="{'invalid-field': f['phoneNumber'].invalid && f['phoneNumber'].touched}"
+                      />
+                      <div *ngIf="f['phoneNumber'].touched && f['phoneNumber'].hasError('required')">
+                        <small>PhoneNumber is required.</small>
+                      </div>
+                      <div *ngIf="f['phoneNumber'].touched && f['phoneNumber'].hasError('pattern')">
+                        <small>Invalid phone number format. Please enter a 10-digit number.</small>
+                      </div>
+                      <div *ngIf="f['phoneNumber'].touched && !f['phoneNumber'].hasError('required') && !f['phoneNumber'].hasError('pattern')">
+                        <small>Only numbers are allowed in the PhoneNumber field.</small>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <button
+                    class="btn btn-primary btn-block btn-signup"
+                    type="button"
+                    (click)="submit()"
+                  >
+                    Sign Up
+                  </button>
+                </form>
+                <p class="text-center text-muted mt-5 mb-0">Have already an account?
+                  <a href="#!" class="forgot-password" routerLink="/login">Login here</a>
+                </p>
+              </div>
+              <div class="col-md-10 col-lg-6 col-xl-7 order-1 order-lg-2 d-flex align-items-center">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp" class="img-fluid" alt="Sample image">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           
+
+            
+
+
+
+
+
+
+
+
+
+
+           
+
+            

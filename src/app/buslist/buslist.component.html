@@ -1,0 +1,14 @@
+<p>buslist works!</p>
+<div>
+    <h2>List of Buses</h2>
+    <ul>
+      <li *ngFor="let bus of filteredBuses">
+        Bus Name: {{ bus.busName }}
+        Source: {{ bus.source }}
+        Destination: {{ bus.destination }}
+        <!-- Add more properties as needed -->
+      </li>
+    </ul>
+    <app-viewbuses *ngIf="showViewBuses"></app-viewbuses>
+  </div>
+  

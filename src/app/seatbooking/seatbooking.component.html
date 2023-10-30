@@ -1,0 +1,118 @@
+<div class="register-card">
+  <div class="profile-name-card">Booking Form</div>
+  <form class="form-signup" (ngSubmit)="submit()" [formGroup]="form">
+    <div class="profile-img-card">
+      
+    
+    <div class="form-row">
+      <div class="col">
+        <div class="form-group">
+          <label for="userId">UserId</label>
+          <input type="number" id="userId" class="form-control" placeholder="UserId"
+          formControlName="userId" required >
+        </div>
+        <div class="form-group">
+          <label for="busId">BusId</label>
+          <input type="number" id="busId" class="form-control" 
+          formControlName="busId" required >
+        </div>
+        <div class="form-group">
+          <label for="busName">BusName</label>
+          <input
+          type="text"
+          id="busName"
+          class="form-control"
+          formControlName="busName"
+          required
+        />
+          
+        </div>
+        <div class="form-group">
+          <label for="source">Source</label>
+          <input type="string" id="source" class="form-control"
+          formControlName="source" required >
+        </div>
+        
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="destination">Destination</label>
+          <input type="string" id="destination" class="form-control" placeholder="Destination" 
+          formControlName="destination" required >
+        </div>
+        <div class="form-group">
+          <label for="firstACSeats">firstACSeats</label>
+          <input type="number" id="firstACSeats" class="form-control" 
+          formControlName="firstACSeats" required >
+        </div>
+        <div class="form-group">
+          <label for="secondACSeats">secondACSeats</label>
+          <input
+          type="number"
+          id="secondACSeats"
+          class="form-control"
+          formControlName="secondACSeats"
+          required
+        />
+        </div>
+        <div class="form-group">
+          <label for="sleeperSeats">sleeperSeats</label>
+          <input
+          type="number"
+          id="sleeperSeats"
+          class="form-control"
+          formControlName="sleeperSeats"
+          required
+        />
+        </div>
+        <div class="form-group">
+          <label for="bookingDate">bookingDate</label>
+          <input
+          type="date"
+          id="bookingDate"
+          class="form-control"
+          formControlName="bookingDate"
+          required
+        />
+        </div>
+        <div class="form-group">
+          <label for="departureDate">departureDate</label>
+          <input
+          type="datetime-local"
+          id="departureDate"
+          class="form-control"
+          formControlName="departureDate"
+          required
+        />
+        </div>  
+        <div class="form-group">
+          <label for="departureTime">departureTime</label>
+          <input
+            type="text"
+            id="departureTime"
+            class="form-control"
+            formControlName="departureTime"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="fareAmount">fareAmount</label>
+          <input
+          type="number"
+          id="fareAmount"
+          class="form-control"
+          formControlName="fareAmount"
+          required
+        />
+        </div>
+        
+  
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+  </form>
+
+  
+</div>

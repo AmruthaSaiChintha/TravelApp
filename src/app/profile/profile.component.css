@@ -1,0 +1,48 @@
+.bus-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.bus-row {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.bus-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: calc(20% - 20px); /* Distribute 5 cards evenly in a row */
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.bus-card img {
+  max-width: 100%;
+  height: auto;
+}
+
+.bus-card h2 {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  color: #333; /* Customize text color */
+}
+
+.bus-rating {
+  display: flex;
+  align-items: center;
+}
+
+.bus-rating-stars {
+  display: inline-block;
+  width: auto;
+  font-size: 1.2rem;
+  color: #ffc107; /* Star color */
+}
+
+.bus-rating-value {
+  font-weight: bold;
+  margin-left: 10px;
+  color: #4caf50; /* Rating value color */
+}

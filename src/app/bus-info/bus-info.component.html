@@ -1,0 +1,20 @@
+<h1>hi</h1>
+<div class="container mt-4">
+    <h1 class="text-center">Bus Information</h1>
+    <hr>
+  
+    <div *ngIf="selectedBus" class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ selectedBus.source }} - {{ selectedBus.destination }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">
+          Departure Time: {{ selectedBus.departureTime }} | Departure Date: {{ selectedBus.departureDate }} | BusName: {{ selectedBus.BusName }}
+        </h6>
+        <button class="btn btn-primary" (click)="bookSeat()">Book Seat</button>
+      </div>
+    </div>
+  
+    <div *ngIf="!selectedBus" class="alert alert-danger mt-4">
+      No bus information available for the selected criteria.
+    </div>
+  </div>
+  

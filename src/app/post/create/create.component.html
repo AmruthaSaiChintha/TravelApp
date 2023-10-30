@@ -1,0 +1,210 @@
+<div class="container">
+    <h1>Create New Course</h1>
+  
+    <a href="#" routerLink="/post/index" class="btn btn-primary">Back</a>
+        
+    <form [formGroup]="form" (ngSubmit)="submit()">
+  
+        
+        <div class="form-group">
+            <label for="busName">busName:</label>
+            <textarea
+                formControlName="busName"
+                id="busName" 
+                type="text" 
+                class="form-control">
+            </textarea>
+
+            <div *ngIf="f['busName'].touched && f['busName'].invalid" class="alert alert-danger">
+                <div *ngIf="f['busName'].errors && f['busName'].errors['required']">busName is required.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="source">source:</label>
+            <textarea
+                formControlName="source"
+                id="source" 
+                type="text" 
+                class="form-control">
+            </textarea>
+
+            <div *ngIf="f['source'].touched && f['source'].invalid" class="alert alert-danger">
+                <div *ngIf="f['source'].errors && f['source'].errors['required']">busName is required.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="image">image</label>
+            <textarea
+                formControlName="image"
+                id="image" 
+                type="text" 
+                class="form-control" >
+            </textarea>
+            <div *ngIf="f['image'].touched && f['image'].invalid" class="alert alert-danger">
+                <div *ngIf="f['image'].errors && f['image'].errors['required']">image is required.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="destination">destination:</label>
+            <textarea
+                formControlName="destination"
+                id="destination" 
+                type="text" 
+                class="form-control">
+            </textarea>
+
+            <div *ngIf="f['destination'].touched && f['destination'].invalid" class="alert alert-danger">
+                <div *ngIf="f['destination'].errors && f['destination'].errors['required']">destination is required.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="departureDate">departureDate:</label>
+            <textarea
+                formControlName="departureDate"
+                id="departureDate" 
+                type="text" 
+                class="form-control">
+            </textarea>
+
+            <div *ngIf="f['departureDate'].touched && f['departureDate'].invalid" class="alert alert-danger">
+                <div *ngIf="f['departureDate'].errors && f['departureDate'].errors['required']">departureDate is required.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="departureTime">departureTime:</label>
+            <textarea
+                formControlName="departureTime"
+                id="departureTime" 
+                type="text" 
+                class="form-control">
+            </textarea>
+
+            <div *ngIf="f['departureTime'].touched && f['departureTime'].invalid" class="alert alert-danger">
+                <div *ngIf="f['departureTime'].errors && f['departureTime'].errors['required']">departureTime is required.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="charges">charges:</label>
+            <input
+                formControlName="charges"
+                id="charges" 
+                type="number" 
+                class="form-control">
+            
+            <div *ngIf="f['charges'].touched && f['charges'].invalid" class="alert alert-danger">
+                <div *ngIf="f['charges'].errors && f['charges'].errors['required']">Course Fees is required.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="FirstAC"> FirstAC:</label>
+            <input
+                formControlName="FirstAC"
+                id="FirstAC" 
+                type="number" 
+                class="form-control">
+            
+            <div *ngIf="f['FirstAC'].touched && f['FirstAC'].invalid" class="alert alert-danger">
+                <div *ngIf="f['FirstAC'].errors && f['FirstAC'].errors['required']">FirstAC is required.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="SecondAC">SecondAC:</label>
+            <input
+                formControlName="SecondAC"
+                id="SecondAC" 
+                type="number" 
+                class="form-control">
+            
+            <div *ngIf="f['SecondAC'].touched && f['SecondAC'].invalid" class="alert alert-danger">
+                <div *ngIf="f['SecondAC'].errors && f['SecondAC'].errors['required']">Course Fees is required.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Sleeper">Sleeper:</label>
+            <input
+                formControlName="Sleeper"
+                id="Sleeper" 
+                type="number" 
+                class="form-control">
+            
+            <div *ngIf="f['Sleeper'].touched && f['Sleeper'].invalid" class="alert alert-danger">
+                <div *ngIf="f['Sleeper'].errors && f['Sleeper'].errors['required']">Course Fees is required.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Total">Total:</label>
+            <input
+                formControlName="Total"
+                id="Total" 
+                type="number" 
+                class="form-control">
+            
+            <div *ngIf="f['Total'].touched && f['Total'].invalid" class="alert alert-danger">
+                <div *ngIf="f['Total'].errors && f['Total'].errors['required']">Total is required.</div>
+            </div>
+        </div>
+        <!-- For firstACPrice -->
+<div class="form-group">
+    <label for="firstACPrice">First AC Price:</label>
+    <input
+      formControlName="firstACPrice"
+      id="firstACPrice"
+      type="number"
+      class="form-control"
+    />
+    <div *ngIf="f['firstACPrice'].touched && f['firstACPrice'].invalid" class="alert alert-danger">
+      <div *ngIf="f['firstACPrice'].errors && f['firstACPrice'].errors['required']">First AC Price is required.</div>
+    </div>
+  </div>
+  
+  <!-- For secondACPrice -->
+  <div class="form-group">
+    <label for="secondACPrice">Second AC Price:</label>
+    <input
+      formControlName="secondACPrice"
+      id="secondACPrice"
+      type="number"
+      class="form-control"
+    />
+    <div *ngIf="f['secondACPrice'].touched && f['secondACPrice'].invalid" class="alert alert-danger">
+      <div *ngIf="f['secondACPrice'].errors && f['secondACPrice'].errors['required']">Second AC Price is required.</div>
+    </div>
+  </div>
+  
+  <!-- For sleeperPrice -->
+  <div class="form-group">
+    <label for="sleeperPrice">Sleeper Price:</label>
+    <input
+      formControlName="sleeperPrice"
+      id="sleeperPrice"
+      type="number"
+      class="form-control"
+    />
+    <div *ngIf="f['sleeperPrice'].touched && f['sleeperPrice'].invalid" class="alert alert-danger">
+      <div *ngIf="f['sleeperPrice'].errors && f['sleeperPrice'].errors['required']">Sleeper Price is required.</div>
+    </div>
+  </div>
+  
+  
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
+    </form>
+</div>
+<div class="container">
+    <h3 class="text-center my-5 items_title"></h3>
+    <p class="text-center text-muted mt-5 mb-0"><a href="#!"
+      class="forgot-password" routerLink="/adminDashboard"></a>
+  
+  
+  <table class="table table-striped table-dark">
+    <thead>
+    </thead>
+    <tbody>
+        
+     
+    </tbody>
+  </table>
+  <div>
+    <p class="text-center text-muted mt-5 mb-0"><a href="#!"
+      class="forgot-password" routerLink="/adminDashboard">Go Back</a>
+  </div>
+  </div>

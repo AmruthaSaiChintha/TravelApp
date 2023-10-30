@@ -1,0 +1,101 @@
+<!-- 
+<div class="container">
+    <p></p>
+    <h1>Give your Valuable feedback</h1>
+    <br>
+    <a href="#" routerLink="/edititem" class="btn btn-primary btn-custom">Back</a>
+    
+   
+    
+        
+    <form [formGroup]="form" (ngSubmit)="submit()">
+  
+        
+        <div class="form-group">
+            <label for="Text">Text:</label>
+            <textarea
+                formControlName="Text"
+                id="Text" 
+                type="text" 
+                class="form-control">
+            </textarea>
+
+            <div *ngIf="f['Text'].touched && f['Text'].invalid" class="alert alert-danger">
+                <div *ngIf="f['Text'].errors && f['Text'].errors['required']">Text is required.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Rating">Rating:</label>
+            <textarea
+                formControlName="Rating"
+                id="Rating" 
+                type="text" 
+                class="form-control">
+            </textarea>
+
+            <div *ngIf="f['Rating'].touched && f['Rating'].invalid" class="alert alert-danger">
+                <div *ngIf="f['Rating'].errors && f['Rating'].errors['required']">Rating is required.</div>
+            </div>
+        </div>
+
+  
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid" routerLink="/customerDashboard">Submit</button>
+    </form>
+</div> 
+
+
+
+ -->
+
+
+
+
+ <div class="container">
+    <p></p>
+    <h1>Give your Valuable feedback</h1>
+    <br>
+    <a href="#" routerLink="/edititem" class="btn btn-primary btn-custom">Back</a>
+      
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="form-group">
+        <div class="form-group">
+          <label for="BusName">BusName:</label>
+          <input
+            formControlName="BusName"
+            id="BusName" 
+            type="text" 
+            class="form-control"
+          >
+    
+          <div *ngIf="f['BusName'].touched && f['BusName'].invalid" class="alert alert-danger">
+            <div *ngIf="f['BusName'].errors && f['BusName'].errors['required']">BusName is required.</div>
+          </div>
+        </div>
+        <label for="Text">Text:</label>
+        <textarea
+          formControlName="Text"
+          id="Text" 
+          type="text" 
+          class="form-control"
+        ></textarea>
+  
+        <div *ngIf="f['Text'].touched && f['Text'].invalid" class="alert alert-danger">
+          <div *ngIf="f['Text'].errors && f['Text'].errors['required']">Text is required.</div>
+        </div>
+      </div>
+      <label for="Rating">Rating:</label>
+      <app-star-rating
+      [rating]="f['Rating'].value"
+      (ratingChange)="f['Rating'].setValue($event)"
+    ></app-star-rating>
+    
+
+<div *ngIf="f['Rating'].touched && f['Rating'].invalid" class="alert alert-danger">
+  <div *ngIf="f['Rating'].errors && f['Rating'].errors['required']">Rating is required.</div>
+</div>
+
+  
+      <button class="btn btn-primary" type="submit" [disabled]="!form.valid" >Submit</button>
+    </form>
+  </div>
+  

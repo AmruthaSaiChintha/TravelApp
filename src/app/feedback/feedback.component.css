@@ -1,0 +1,289 @@
+/* Custom CSS for the feedback card */
+.feedback-card {
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+.container img{
+  width: 100px;
+  height: 100px;
+  margin-bottom: 15px;
+  transition: 0.3s ease-in-out;
+}
+/* Custom CSS to reduce left-side space for the table */
+.custom-table {
+  margin-left: 0;
+}
+/* Your provided CSS styles */
+
+.register-card {
+  max-width: 400px;
+  max-height: 600px;
+  padding: 40px 40px;
+  background-color: #F7F7F7;
+  margin: 0 auto 25px;
+  margin-top: 10px;
+  border-radius: 2px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.register-card .profile-img-card {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 0;
+  display: block;
+  border-radius: 50%;
+}
+
+.register-card .form-signup input[type=email],
+.register-card .form-signup input[type=password],
+.register-card .form-signup input[type=text],
+.register-card .form-signup button {
+  height: 20px;
+  font-size: 10px;
+  width: 100%;
+  display: block;
+  margin-bottom: 5px;
+  z-index: 1;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.register-card label {
+  color: #000000;
+}
+
+.register-card .form-signup .form-control:focus {
+  border-color: rgb(104, 145, 162);
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgb(104, 145, 162);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgb(104, 145, 162);
+}
+
+.register-card .btn.btn-signup {
+  font-weight: 700;
+  height: 36px;
+  line-height: 36px;
+  font-size: 14px;
+  background: rgb(104, 145, 162);
+  border-radius: 3px;
+  border: none;
+  transition: all 0.218s;
+  padding: 0;
+}
+
+.register-card .btn.btn-signup:hover,
+.register-card .btn.btn-signup:active,
+.register-card .btn.btn-signup:focus {
+  background: rgb(12, 97, 33);
+}
+
+.register-card .forgot-password {
+  color: rgb(104, 145, 162);
+}
+.register-card .form-signup input[type=email], .register-card .form-signup input[type=password], .register-card .form-signup input[type=text], .register-card .form-signup button {
+  height:30px;
+  font-size: 12px;
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
+  z-index: 1;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.register-card .forgot-password:hover,
+.register-card .forgot-password:active,
+.register-card .forgot-password:focus {
+  color: rgb(12, 97, 33);
+}
+
+.register-card {
+  background-color: rgb(243, 233, 233);
+  box-shadow: 10px 10px 5px 5px rgb(231, 243, 248);
+  display: flex; /* Use flexbox to arrange items */
+  justify-content: space-between; /* Space between image and content */
+  align-items: center; /* Vertically center items */
+  padding: 20px;
+}
+
+.profile-img-card {
+  max-width: 100px;
+}
+
+.content {
+  flex-grow: 1; /* Allow content to grow and take remaining space */
+}
+
+.text-center {
+  font-size: 20px;
+}
+
+.form-group {
+  text-align: left;
+}
+
+.btn-signup {
+  margin-top: 20px;
+}
+
+.alert {
+  margin-top: 20px;
+}
+.register-card {
+background-color: transparent; /* Remove background color */
+box-shadow: none; /* Remove box shadow */
+}
+/* Navbar Styles */
+.navbar {
+background-color: #000; /* Set the background color to black */
+color: #fff; /* Set the text color to white */
+padding: 10px 0;
+}
+
+.navbar ul.nav {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+
+.navbar ul.nav li.nav-item {
+display: inline;
+margin-right: 20px; /* Adjust the spacing between navbar items */
+}
+
+.navbar ul.nav li.nav-item a.nav-link {
+color: #fff;
+text-decoration: none;
+font-weight: bold;
+}
+
+.navbar ul.nav li.nav-item a.nav-link:hover {
+color: #ffcc00; /* Change color on hover */
+}
+
+/* Center align the content within the navbar */
+.navbar {
+text-align: center;
+}
+/* Optional CSS styles for user profile card */
+.user-profile-card {
+background-color: #f3e9e9;
+box-shadow: 10px 10px 5px 5px #e7f3f8;
+padding: 20px;
+text-align: center;
+}
+
+.profile-img-card {
+max-width: 150px;
+border-radius: 50%;
+}
+
+.text-center {
+font-size: 24px;
+}
+
+.form-signup {
+margin-top: 20px;
+}
+
+.form-group {
+text-align: left;
+}
+
+.btn-signup {
+margin-top: 20px;
+}
+
+.alert {
+margin-top: 20px;
+}
+
+/* Style for the feedback header */
+.feedback-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Style for the feedback awards list */
+.feedback-awards {
+  list-style: none;
+  padding-left: 0;
+}
+
+.feedback-awards li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+}
+
+.feedback-awards li span {
+  margin-right: 10px;
+  font-size: 24px;
+}
+
+/* Style for the unique features section */
+.feedback-features {
+  margin-top: 20px;
+}
+
+.feedback-features ul {
+  list-style-type: disc;
+}
+
+/* Style for the concluding message */
+.concluding-message {
+  font-style: italic;
+  text-align: center;
+  color: #888;
+  margin-top: 20px;
+}
+/* Custom CSS for the feedback card */
+.feedback-card {
+  padding: 50px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #8f98be, #bcb4c4);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the feedback header */
+.feedback-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Style for the feedback awards list */
+.feedback-awards {
+  list-style: none;
+  padding-left: 0;
+}
+
+.feedback-awards li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+}
+
+.feedback-awards li span {
+  margin-right: 10px;
+  font-size: 24px;
+}
+
+/* Style for the unique features section */
+.feedback-features {
+  margin-top: 20px;
+}
+
+.feedback-features ul {
+  list-style-type: disc;
+}
+
+/* Style for the concluding message */
+.concluding-message {
+  font-style: italic;
+  text-align: center;
+  color: #888;
+  margin-top: 20px;
+}

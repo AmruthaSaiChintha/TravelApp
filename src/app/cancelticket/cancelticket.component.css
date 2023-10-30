@@ -1,0 +1,86 @@
+/* Add this CSS to your component's CSS file */
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    justify-content: center;
+    align-items: center;
+    z-index: 999; /* Ensure it's on top of everything */
+  }
+  
+  .popup-content {
+    background-color: #fff; /* White background for the popup */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Box shadow for a subtle elevation effect */
+    text-align: center;
+  }
+  
+  .popup h2 {
+    font-size: 24px;
+    color: #333; /* Text color */
+  }
+  
+  .popup p {
+    font-size: 16px;
+    color: #666; /* Text color */
+  }
+  
+  /* To display the popup when the success message is shown */
+  .show-popup {
+    display: flex !important; /* Override the 'display: none;' property */
+  }
+  .success-message {
+    background-color: #4CAF50; /* Green background color */
+    color: #fff; /* White text color */
+    padding: 20px; /* Add some padding */
+    text-align: center; /* Center-align the text */
+    border-radius: 5px; /* Add rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+  }
+  
+  .success-message h2 {
+    font-size: 24px; /* Set the heading font size */
+    margin-bottom: 10px; /* Add some spacing below the heading */
+  }
+  
+  .success-message p {
+    font-size: 16px; /* Set the paragraph font size */
+  }
+  /* Navbar Styles */
+.navbar {
+  background-color: #000; /* Set the background color to black */
+  color: #fff; /* Set the text color to white */
+  padding: 10px 0;
+}
+
+.navbar ul.nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar ul.nav li.nav-item {
+  display: inline;
+  margin-right: 20px; /* Adjust the spacing between navbar items */
+}
+
+.navbar ul.nav li.nav-item a.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar ul.nav li.nav-item a.nav-link:hover {
+  color: #ffcc00; /* Change color on hover */
+}
+
+/* Center align the content within the navbar */
+.navbar {
+  text-align: center;
+}
