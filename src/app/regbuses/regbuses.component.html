@@ -1,26 +1,30 @@
 
 
 
-<header class="bg-surface-primary border-bottom pt-6">
-  <div class="container-fluid">
-      <div class="mb-npx">
-          <div class="row align-items-center">
-              <!-- Navigation Options -->
-              <div class="col-12 text-center">
-                  <ul class="nav nav-tabs mt-4 overflow-x border-0">
-                    <li class="nav-item"><a href="/post" class="nav-link">Add Bus</a></li>
-                    <li class="nav-item"><a href="/regbuses" class="nav-link">Users</a></li>
-                    <li class="nav-item"><a href="/viewbookings" class="nav-link">Bookings</a></li>
-                     <li class="nav-item"><a href="/refund" class="nav-link">RefundReq</a></li>
-                     <li class="nav-item"><a href="/showfeed" class="nav-link">feedback Info</a></li>
-                    <li class="nav-item"><a href="/Admin" class="nav-link">Logout</a></li>
-                      <!-- <li class="nav-item"><a href="/feedback" class="nav-link">Information</a></li>   -->
-                  </ul>
-              </div>
-          </div>
-      </div>
-  </div>
-</header>
+
+
+<nav class="navbar">
+  <ul class="nav">
+    <li class="nav-item">
+      <a [routerLink]="['/post']" class="nav-link">Add Bus</a>
+    </li>
+    <li class="nav-item">
+      <a [routerLink]="['/viewbookings']" class="nav-link">Book</a>
+    </li>
+    <li class="nav-item">
+      <a [routerLink]="['/regbuses']" class="nav-link">Users</a>
+    </li>
+    <li class="nav-item">
+      <a [routerLink]="['/refund']" class="nav-link">Refund</a>
+    </li>
+    <li class="nav-item">
+      <a [routerLink]="['/showfeed']" class="nav-link">feedback</a>
+    </li>
+    <li class="nav-item">
+      <a [routerLink]="['/login']" class="nav-link">Logout</a>
+    </li>    
+  </ul>
+</nav>
 <li [hidden]="!IsLoggedIn" class="nav-item"><a class="nav-link" (click)="Logout()">Logout</a></li>   
     <div class="container">
     <h3 class="text-center my-5 items_title">Registered Users</h3>

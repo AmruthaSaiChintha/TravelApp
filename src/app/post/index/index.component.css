@@ -8,4 +8,130 @@
 .custom-table {
     margin-left: 0;
   }
+  .register-card {
+    background-color: rgb(243, 233, 233);
+    box-shadow: 10px 10px 5px 5px rgb(231, 243, 248);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.profile-header {
+    text-align: center;
+}
+
+.profile-header h3 {
+    margin: 0;
+}
+
+.profile-details {
+    margin-top: 20px;
+}
+
+.profile-item {
+    margin-bottom: 10px;
+}
+
+.profile-item strong {
+    display: inline-block;
+    width: 150px;
+    font-weight: bold;
+}
+
+.profile-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.edit-profile-button,
+.view-bookings-button {
+    flex: 1;
+    margin: 0 5px;
+}
+/* Navbar Styles */
+.navbar {
+    background-color: #2d2a2a; /* Set the background color to black */
+    color: #fff; /* Set the text color to white */
+    padding: 10px 0;
+}
+
+.navbar ul.nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar ul.nav li.nav-item {
+    display: inline;
+    margin-right: 20px; /* Adjust the spacing between navbar items */
+}
+
+.navbar ul.nav li.nav-item a.nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar ul.nav li.nav-item a.nav-link:hover {
+    color: #ffcc00; /* Change color on hover */
+}
+
+/* Center align the content within the navbar */
+.navbar {
+    text-align: center;
+}
+.user-profile-card {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    background: none;
+    border: 1px solid #ccc;
+  }
+  
+  .profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  
+  .profile-content {
+    flex: 1;
+    text-align: left;
+  }
+  
+  .profile-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .profile-details {
+    margin-bottom: 20px;
+  }
+  
+  .profile-item {
+    margin-bottom: 10px;
+  }
+  
+  .profile-item strong {
+    font-weight: bold;
+  }
+  
+  .profile-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .edit-profile-button,
+  .view-bookings-button {
+    flex: 1;
+    margin: 0 10px;
+  }
+  
+  /* Add additional CSS styles as needed */
   

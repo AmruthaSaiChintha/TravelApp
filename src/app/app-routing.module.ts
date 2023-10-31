@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { IndexComponent } from './index/index.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
-import { aboutComponent } from './about/about.component';
+// import { aboutComponent } from './about/about.component';
 import { SignupComponent } from './signup/signup.component';
 import { AdminComponent } from './Admin/Admin.component';
 import { CustomerDashboardComponent } from './customer-dashboard/customer-dashboard.component';
@@ -46,6 +46,9 @@ import { BusComponent } from './bus/bus.component';
 import { ViewticketComponent } from './viewticket/viewticket.component';
 import { StarRatingComponent } from './star-rating/star-rating.component';
 import { BuslistComponent } from './buslist/buslist.component';
+import { MybookComponent } from './mybook/mybook.component';
+import { aboutComponent } from './about/about.component';
+
 const routes: Routes = [
 
 
@@ -112,6 +115,8 @@ const routes: Routes = [
 { path: 'ticket', component: ticketComponent },
 {path:'viewticket',component:ViewticketComponent},
 {path:'buslist',component:BuslistComponent},
+{path:'mybook',component:MybookComponent},
+{path:'about',component:aboutComponent},
 { path: '', redirectTo: '/buslist', pathMatch: 'full' },
 
 { path: '', redirectTo: '/search', pathMatch: 'full' }, // Default route
