@@ -1,6 +1,12 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +16,10 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class LoginComponent implements OnInit {
   form: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(6),
+    ]),
   });
   hasValidationErrors: boolean = false;
   invalidPassword: boolean = false;
@@ -45,24 +54,55 @@ export class LoginComponent implements OnInit {
     } else {
       // If the email and password don't match the special case, make an HTTP request to authenticate
       const param = { email, pwd: password };
-    
-      this.http.get<any>('https://localhost:44331/api/RegisterUsers/' + email + '/' + password).subscribe(data => {
-        console.log(data);
 
-        if (data.Status === 'Error') {
-          // Password is incorrect
+      const postData = { userName: email, password: password };
+
+      this.sendPostRequest(postData).subscribe((data) => {
+        console.log(data.token);
+
+        //if token is null means authentication failed so set either username or password as invalid
+        if (!data.token) {
           this.invalidPassword = true;
-          this.form.controls['password'].setErrors({'invalidPassword': true});
+          this.form.controls['password'].setErrors({ invalidPassword: true });
         } else {
-          localStorage.setItem('User', JSON.stringify(data));
+          this.http
+            .get<any>(
+              'https://localhost:44331/api/RegisterUsers/' +
+                email +
+                '/' +
+                password
+            )
+            .subscribe((data) => {
+              console.log(data);
 
-          if (data.value.userType === 'Admin') {
-            window.location.href = '/adminDashboard';
-          } else {
-            window.location.href = '/customerDashboard';
-          }
+              if (data.Status === 'Error') {
+                // Password is incorrect
+                this.invalidPassword = true;
+                this.form.controls['password'].setErrors({
+                  invalidPassword: true,
+                });
+              } else {
+                localStorage.setItem('User', JSON.stringify(data));
+
+                if (data.value.userType === 'Admin') {
+                  window.location.href = '/adminDashboard';
+                } else {
+                  window.location.href = '/customerDashboard';
+                }
+              }
+            });
         }
       });
     }
+  }
+
+  sendPostRequest(data: any): Observable<any> {
+    const accountAuthUrl = `https://localhost:44331/api/Accounts/GetToken`;
+
+    const options = {
+      headers: new HttpHeaders().append('Content-Type', 'application/json'),
+    };
+
+    return this.http.post<any>(accountAuthUrl, JSON.stringify(data), options);
   }
 }
